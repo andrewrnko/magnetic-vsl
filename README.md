@@ -5,6 +5,14 @@ Cloned from the TRW hero composition and rebuilt on the Magnetic brand; the
 funnel behind the button follows the whiteboard playbook (apply → three
 qualifying questions → book → what-to-expect).
 
+## Live
+
+https://andrewrnko.github.io/magnetic-vsl/ (repo andrewrnko/magnetic-vsl, Pages
+from main). Static only, so `/api/apply` does not exist there; the form is
+preview until it is pointed at a real destination. Vercel is at the 200-project
+Hobby cap, `api/apply.js` (AgentMail) is ready for the day there is room.
+To iterate: edit here, rsync into `~/magnetic-vsl-pages/`, commit, push.
+
 ## Run
 
     node server.js        # http://127.0.0.1:4850
