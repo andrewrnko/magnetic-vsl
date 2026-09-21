@@ -448,6 +448,7 @@ a{color:inherit;text-decoration:none}
 }
 
 @media (max-width:760px){
+  html,body{overflow-x:hidden;max-width:100%}
   body{overflow-y:auto}
   .beam-a{top:58%;height:110px}
   .beam-a::after{filter:blur(38px);opacity:.55}
@@ -508,3 +509,9 @@ a{color:inherit;text-decoration:none}
 @media (prefers-reduced-motion:reduce){
   *{transition-duration:.001ms !important;animation-duration:.001ms !important}
 }
+
+/* logo mark + legal (added 2026-09-20) */
+.orb-mark{position:relative;z-index:2}
+.consent{margin:14px 2px 0;font-size:11px;line-height:16px;color:var(--faint);text-align:left}
+.consent a{color:var(--blue-lite);text-decoration:underline}
+.menu-legal{margin:8px 8px 2px;font-size:11px;line-height:15px;color:rgba(255,255,255,.42)}
