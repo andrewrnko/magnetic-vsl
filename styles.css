@@ -11,21 +11,19 @@
   --glass:rgba(255,255,255,.035);
   --display:"Figtree","Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"SF Pro Display",Helvetica,Arial,sans-serif;
   --sans:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;
-  --rail-h:36px;    /* legal line only */
   --vsl-ratio:2 / 1;   /* reference card shape; set to 16 / 9 for an uncropped 16:9 master */
 }
 
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none !important}
 
-html,body{height:100%}
+html,body{min-height:100%}
 body{
   margin:0;
   background:var(--bg);
   color:var(--ink);
   font-family:var(--sans);
   -webkit-font-smoothing:antialiased;
-  overflow:hidden;
 }
 body.modal-open{overflow:hidden}
 
@@ -130,7 +128,7 @@ a{color:inherit;text-decoration:none}
   position:relative;z-index:10;
   height:100svh;
   max-height:100svh;
-  padding:round(clamp(88px,8.2svh,96px),1px) 20px calc(var(--rail-h) + 12px);
+  padding:round(clamp(88px,8.2svh,96px),1px) 20px round(clamp(48px,5.2svh,64px),1px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
 }
@@ -179,6 +177,8 @@ a{color:inherit;text-decoration:none}
   font-family:var(--display);
   color:var(--ink);
 }
+/* one clause per line — never let "Need Marketing." break away on its own */
+.headline span{white-space:nowrap}
 
 .sub{
   flex:none;
@@ -210,9 +210,10 @@ a{color:inherit;text-decoration:none}
 }
 .vsl-frame{
   position:relative;z-index:1;
+  flex:none;                 /* never let the flex line shrink the card off-ratio */
   height:100%;width:auto;
   max-width:100%;
-  max-height:min(468px,52vw);
+  max-height:min(384px,46vw);
   aspect-ratio:var(--vsl-ratio);
   border-radius:21px;
   box-shadow:
@@ -293,7 +294,7 @@ a{color:inherit;text-decoration:none}
 
 /* ────────────────────────  bottom legal shell  ──────────────────────── */
 
-.rail{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 20px;pointer-events:none}
+.rail{position:relative;z-index:20;padding:0 20px}
 
 /* ─────────────────────────────  apply modal  ───────────────────────── */
 
@@ -360,7 +361,6 @@ a{color:inherit;text-decoration:none}
 
 @media (max-width:760px){
   html,body{overflow-x:hidden;max-width:100%}
-  body{overflow-y:auto}
   .beam-a{top:58%;height:110px}
   .beam-a::after{filter:blur(38px);opacity:.55}
   .beam-a::before{height:10px;opacity:.7}
@@ -377,19 +377,17 @@ a{color:inherit;text-decoration:none}
   .nav-cta{height:38px;margin-right:4px;padding:0 15px;gap:7px}
   .nav-menu{padding:0 18px}
   .orb{font-size:17px}
-  .hero{padding:70px 14px calc(var(--rail-h) + 10px);justify-content:center}
+  .hero{padding:70px 14px 96px;justify-content:center}
   .eyebrow{margin-bottom:12px}
   .ticker{padding:3px 15px 3px 3px;gap:10px}
   .ticker-tag{padding:6px 13px;font-size:12px}
   .ticker-text{font-size:12px}
-  .headline{margin-top:16px;font-size:clamp(30px,8.6vw,46px);letter-spacing:-.03em}
+  .headline{margin-top:16px;font-size:clamp(19px,6.0vw,34px);letter-spacing:-.03em}
   .sub{margin-top:12px;font-size:14.5px;max-width:46ch}
-  /* 3:2 on phones: the card fills the column and takes back the vertical slack a
-     16:9 strip leaves in a portrait viewport. object-fit:cover trims the sides. */
-  .vsl{margin-top:16px;--vsl-ratio:3 / 2}
-  /* width-driven on phones: the card matches the CTA column exactly, and .vsl
-     absorbing every spare pixel keeps the text rows on whole pixels. */
-  .vsl-frame{width:100%;height:auto;max-height:100%}
+  .vsl{margin-top:16px;--vsl-ratio:16 / 9}
+  /* the cap lives on the card, never on .vsl — .vsl has to stay the one element
+     that swallows the leftover height, or the text rows land on half pixels */
+  .vsl-frame{max-height:min(300px,54vw)}
   .cta{margin-top:20px;min-width:0;width:100%;max-width:none;height:54px;font-size:17px}
   .proof{margin-top:14px;gap:10px}
   .proof p{font-size:13px}
@@ -443,7 +441,6 @@ a{color:inherit;text-decoration:none}
 .legal-sep{opacity:.4}
 
 @media (max-width:760px){
-  :root{--rail-h:64px}
   .legal-hero{padding:8px 14px calc(8px + env(safe-area-inset-bottom))}
   .legal-row{font-size:9.5px;line-height:13px;gap:3px 7px}
 }
