@@ -30,7 +30,9 @@
   display:flex;
   padding:0 20px 40px;
   overflow-y:auto;
+  scrollbar-width:none;
 }
+.flow-stage::-webkit-scrollbar{display:none}
 /* margin:auto centres it AND keeps the top reachable when it overflows */
 .flow-col{width:100%;max-width:520px;margin:auto;text-align:center}
 
@@ -149,7 +151,7 @@
   font-size:12px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--faint);
 }
-.next-list{margin:0;padding-left:20px;color:var(--dim);font-size:14.5px;line-height:1.6}
+.next-list{margin:0;padding-left:20px;text-align:left;color:var(--dim);font-size:14.5px;line-height:1.6}
 .next-list li{margin-bottom:8px}
 .next-list li:last-child{margin-bottom:0}
 
@@ -170,4 +172,128 @@
   .field-lg{height:58px;font-size:16px}
   .opts-3{grid-template-columns:1fr}
   .opt{padding:14px 12px;font-size:14.5px}
+}
+
+/* ─────────────────────────────  booking calendar  ───────────────────────── */
+
+.cal{margin:0 0 4px;text-align:left}
+.cal-note{
+  margin:0 0 16px;text-align:center;
+  font-size:12px;line-height:16px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--faint);
+}
+
+/* day strip: horizontal, snap, no scrollbar */
+.days{
+  display:flex;gap:8px;
+  margin:0 -16px 22px;padding:2px 0 8px;
+  overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-left:16px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.days::-webkit-scrollbar{display:none}
+.day:first-child{margin-left:16px}
+.day:last-child{margin-right:16px}
+.day{
+  flex:0 0 auto;scroll-snap-align:start;
+  width:64px;padding:10px 0 11px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--dim);
+  text-align:center;
+  transition:border-color .16s ease,background .16s ease,color .16s ease;
+}
+.day:hover{border-color:rgba(255,255,255,.2);color:var(--ink)}
+.day-dow{display:block;font-size:11px;line-height:14px;letter-spacing:.14em;text-transform:uppercase;opacity:.8}
+.day-num{display:block;font-family:var(--display);font-size:21px;line-height:26px;font-weight:700;letter-spacing:-.02em}
+.day-mon{display:block;font-size:10px;line-height:13px;letter-spacing:.12em;text-transform:uppercase;opacity:.6}
+.day.sel{
+  border-color:var(--cream);
+  background:var(--cream);
+  color:#0a0a0a;
+  box-shadow:0 0 26px rgba(239,231,214,.18);
+}
+.day.sel .day-dow,.day.sel .day-mon{opacity:.72}
+
+.cal-label{
+  margin:0 0 10px;
+  font-size:13px;line-height:18px;font-weight:500;
+  color:var(--dim);
+}
+.slots{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.slot-btn{
+  padding:14px 8px;border-radius:14px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  color:var(--dim);
+  font-size:15px;line-height:20px;font-weight:500;
+  text-align:center;
+  transition:border-color .16s ease,background .16s ease,color .16s ease;
+}
+.slot-btn:hover:not(:disabled){border-color:rgba(255,255,255,.2);color:var(--ink);background:#151516}
+.slot-btn.sel{
+  border-color:var(--cream);
+  background:var(--cream);
+  color:#0a0a0a;
+  font-weight:600;
+  box-shadow:0 0 26px rgba(239,231,214,.18);
+}
+.slot-btn:disabled{opacity:.3;cursor:not-allowed;text-decoration:line-through}
+.slot-btn:focus-visible,.day:focus-visible{outline:2px solid var(--cream);outline-offset:2px}
+.cal-empty{margin:14px 0 0;font-size:14px;color:var(--faint);text-align:center}
+
+/* booked ticket */
+.ticket{
+  margin:0 0 20px;padding:20px;
+  border-radius:20px;
+  border:1px solid var(--line);
+  background:var(--surface);
+  text-align:left;
+}
+.ticket-when{
+  margin:0 0 6px;
+  font-family:var(--display);
+  font-size:21px;line-height:27px;font-weight:700;letter-spacing:-.02em;
+  color:var(--ink);
+}
+.ticket-sub{margin:0;font-size:13.5px;line-height:19px;color:var(--dim)}
+.ticket-sub span{color:var(--ink)}
+
+/* ─────────────────────────────  legal footer  ───────────────────────── */
+
+.legal{
+  flex:none;
+  padding:14px 20px calc(14px + env(safe-area-inset-bottom));
+  border-top:1px solid rgba(255,255,255,.06);
+  text-align:center;
+}
+.legal-row{
+  margin:0 0 7px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 10px;
+  font-size:11.5px;line-height:16px;color:var(--faint);
+}
+.legal-row a{color:var(--dim);text-decoration:none}
+.legal-row a:hover{color:var(--ink);text-decoration:underline}
+.legal-sep{opacity:.4}
+.legal-fine{
+  margin:0;max-width:640px;margin-inline:auto;
+  font-size:10.5px;line-height:15px;color:#6e6a64;
+}
+
+/* confirm stays reachable on a phone */
+.cal-actions{
+  position:sticky;bottom:0;z-index:2;
+  padding:14px 0 2px;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 0%,#000 26%);
+}
+.cal-actions .cta-block{margin-top:0}
+
+@media (max-width:620px){
+  .legal{padding:11px 16px calc(11px + env(safe-area-inset-bottom))}
+  .legal-row{font-size:11px;line-height:15px;margin-bottom:5px}
+  .legal-fine{font-size:9.5px;line-height:13.5px}
+  .days{margin:0 -16px 18px;padding:2px 0 6px}
+  .day{width:60px}
+  .slot-btn{padding:13px 6px;font-size:14.5px}
 }

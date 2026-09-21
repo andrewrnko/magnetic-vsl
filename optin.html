@@ -10,8 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=3">
-<link rel="stylesheet" href="optin.css?v=1">
+<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="optin.css?v=4">
 </head>
 <body class="optin-body">
 
@@ -114,22 +114,58 @@
 
       <section class="done" id="flowDone" hidden>
         <p class="step-badge">ALMOST DONE</p>
-        <h1 class="step-title">Pick a time that works.</h1>
-        <div class="slot" id="slot">
-          <p class="slot-note">Booking calendar drops in here.</p>
-          <ol class="next-list">
-            <li>We read your answers before the call. No discovery theatre.</li>
-            <li>You get a time slot by email within one business day.</li>
-            <li>On the call we scope the shoot, the cadence and the number.</li>
-          </ol>
+        <h1 class="step-title" id="doneTitle">Pick a time that works.</h1>
+
+        <div class="cal" id="cal">
+          <p class="cal-note">15 minutes &middot; times shown in Pacific</p>
+
+          <div class="days" id="days" role="tablist" aria-label="Pick a day"></div>
+
+          <p class="cal-label" id="slotsLabel">Available times</p>
+          <div class="slots" id="slots" role="listbox" aria-label="Pick a time"></div>
+          <p class="cal-empty" id="slotsEmpty" hidden>Nothing left that day. Try another.</p>
+
+          <div class="cal-actions">
+            <p class="form-error" id="bookError" hidden></p>
+            <button class="cta cta-block" type="button" id="bookBtn" disabled>Pick a day and a time</button>
+          </div>
         </div>
+      </section>
+
+      <section class="done" id="flowBooked" hidden>
+        <p class="step-badge">YOU&rsquo;RE BOOKED</p>
+        <h1 class="step-title">See you then.</h1>
+        <div class="ticket" id="ticket">
+          <p class="ticket-when" id="ticketWhen"></p>
+          <p class="ticket-sub">15 minutes, Pacific. Confirmation on its way to <span id="ticketEmail"></span>.</p>
+        </div>
+        <ol class="next-list">
+          <li>We read your answers before the call. No discovery theatre.</li>
+          <li>You get the link by email. Phone works too if that is easier.</li>
+          <li>On the call we scope the shoot, the cadence and the number.</li>
+        </ol>
         <a class="cta cta-block" href="index.html">Back to the site</a>
       </section>
 
     </div>
   </main>
+
+  <footer class="legal">
+    <p class="legal-row">
+      <span>&copy; 2026 Magnetic LLC</span><span class="legal-sep">&middot;</span>
+      <span>Seattle, WA</span><span class="legal-sep">&middot;</span>
+      <a href="privacy.html">Privacy Policy</a><span class="legal-sep">&middot;</span>
+      <a href="terms.html">Terms</a>
+    </p>
+    <p class="legal-fine">
+      Results vary and depend on your market, your offer and the work you put in.
+      Nothing here is a guarantee of results. This site is not a part of Facebook,
+      Instagram or Meta Platforms, Inc., and is not endorsed by Meta in any way.
+      FACEBOOK and INSTAGRAM are trademarks of META PLATFORMS, INC.
+    </p>
+  </footer>
 </div>
 
-<script src="optin.js?v=1"></script>
+<script src="optin.js?v=2"></script>
 </body>
 </html>

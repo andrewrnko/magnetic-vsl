@@ -11,7 +11,7 @@
   --glass:rgba(255,255,255,.035);
   --display:"Figtree","Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"SF Pro Display",Helvetica,Arial,sans-serif;
   --sans:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;
-  --rail-h:74px;
+  --rail-h:36px;    /* legal line only */
   --vsl-ratio:2 / 1;   /* reference card shape; set to 16 / 9 for an uncropped 16:9 master */
 }
 
@@ -76,7 +76,8 @@ a{color:inherit;text-decoration:none}
 .nav-menu{border-right:1px solid var(--line)}
 .nav-cta{
   border-left:0;
-  margin:5px 5px 5px 0;height:42px;padding:0 22px;border-radius:999px;
+  align-self:center;
+  margin:0 5px 0 0;height:42px;padding:0 22px;border-radius:999px;
   background:var(--cream);color:#0a0a0a;
   font-family:var(--display);font-weight:700;letter-spacing:.06em;
   box-shadow:0 0 26px rgba(239,231,214,.18);
@@ -129,7 +130,7 @@ a{color:inherit;text-decoration:none}
   position:relative;z-index:10;
   height:100svh;
   max-height:100svh;
-  padding:round(clamp(88px,8.8svh,96px),1px) 20px calc(var(--rail-h) + 12px);
+  padding:round(clamp(88px,8.2svh,96px),1px) 20px calc(var(--rail-h) + 12px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
 }
@@ -137,7 +138,7 @@ a{color:inherit;text-decoration:none}
 .eyebrow{
   flex:none;
   display:flex;align-items:center;justify-content:center;gap:16px;
-  margin:0 0 round(min(2.6svh,34px),1px);
+  margin:0 0 round(min(1.9svh,26px),1px);
   font-size:11px;line-height:12px;font-weight:600;letter-spacing:.26em;
   color:var(--faint);
 }
@@ -168,7 +169,7 @@ a{color:inherit;text-decoration:none}
 
 .headline{
   flex:none;
-  margin:round(min(2.2svh,26px),1px) 0 0;
+  margin:round(min(1.6svh,20px),1px) 0 0;
   display:flex;flex-direction:column;
   font-size:clamp(30px, min(5.85vw, 7.0svh), 84px);
   line-height:.90;
@@ -181,8 +182,8 @@ a{color:inherit;text-decoration:none}
 
 .sub{
   flex:none;
-  margin:round(min(1.9svh,22px),1px) 0 0;
-  max-width:44ch;
+  margin:round(min(1.4svh,18px),1px) 0 0;
+  max-width:60ch;
   font-size:clamp(14px, 1.22vw, 17.5px);
   line-height:1.52;
   line-height:round(1.52em,1px);
@@ -197,7 +198,7 @@ a{color:inherit;text-decoration:none}
   flex:1 1 auto;
   min-height:0;
   width:100%;
-  margin:round(min(3.0svh,40px),1px) 0 0;
+  margin:round(min(2.4svh,32px),1px) 0 0;
   display:flex;align-items:center;justify-content:center;
 }
 .vsl-glow{
@@ -210,8 +211,8 @@ a{color:inherit;text-decoration:none}
 .vsl-frame{
   position:relative;z-index:1;
   height:100%;width:auto;
-  max-width:92vw;
-  max-height:min(384px,46vw);
+  max-width:100%;
+  max-height:min(468px,52vw);
   aspect-ratio:var(--vsl-ratio);
   border-radius:21px;
   box-shadow:
@@ -249,7 +250,7 @@ a{color:inherit;text-decoration:none}
   position:relative;
   display:inline-flex;align-items:center;justify-content:center;gap:11px;
   flex:none;
-  margin:round(min(2.8svh,38px),1px) 0 0;
+  margin:round(min(2.0svh,28px),1px) 0 0;
   min-width:328px;height:56px;padding:0 34px;
   border-radius:999px;
   font-family:var(--display);
@@ -276,7 +277,7 @@ a{color:inherit;text-decoration:none}
 .proof{
   flex:none;
   display:flex;align-items:center;gap:13px;
-  margin:round(min(2.0svh,26px),1px) 0 0;
+  margin:round(min(1.4svh,18px),1px) 0 0;
 }
 .faces{display:flex}
 .faces img{
@@ -290,32 +291,9 @@ a{color:inherit;text-decoration:none}
 .proof strong{color:var(--ink);font-weight:700}
 .proof span{color:var(--dim)}
 
-/* ─────────────────────────────  bottom rail  ───────────────────────── */
+/* ────────────────────────  bottom legal shell  ──────────────────────── */
 
 .rail{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:0 20px;pointer-events:none}
-.rail-inner{
-  margin:0 auto;max-width:1198px;height:var(--rail-h);
-  display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,52px);
-  padding:0 30px;
-  border-radius:26px 26px 0 0;
-  border:1px solid var(--line);
-  border-bottom:0;
-  background:rgba(12,12,13,.86);
-  -webkit-backdrop-filter:blur(26px) saturate(110%);
-  backdrop-filter:blur(26px) saturate(110%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 -18px 40px rgba(4,5,8,.55);
-  pointer-events:auto;
-}
-.rail-item{display:flex;align-items:center;gap:12px}
-.rail-icon{width:26px;height:26px;flex:none;fill:var(--ink);opacity:.9}
-.rail-label{
-  margin:0 0 2px;
-  font-size:10.5px;font-weight:700;letter-spacing:.14em;
-  color:var(--faint);
-}
-.rail-label-accent{color:var(--cream)}
-.rail-main{margin:0;font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
-.rail-arrow{width:24px;height:12px;flex:none;color:var(--faint);opacity:.9}
 
 /* ─────────────────────────────  apply modal  ───────────────────────── */
 
@@ -396,41 +374,33 @@ a{color:inherit;text-decoration:none}
   .nav-seg span{display:none}
   .nav-cta span{display:inline;font-size:11px}
   .nav-cta .nav-long{display:none}
-  .nav-cta{padding:0 16px;gap:7px}
+  .nav-cta{height:38px;margin-right:4px;padding:0 15px;gap:7px}
   .nav-menu{padding:0 18px}
-  .navbar{overflow:hidden}
   .orb{font-size:17px}
-  .hero{padding:82px 18px calc(var(--rail-h) + 12px);justify-content:center}
-  .eyebrow{margin-bottom:14px}
+  .hero{padding:70px 14px calc(var(--rail-h) + 10px);justify-content:center}
+  .eyebrow{margin-bottom:12px}
   .ticker{padding:3px 15px 3px 3px;gap:10px}
   .ticker-tag{padding:6px 13px;font-size:12px}
   .ticker-text{font-size:12px}
-  .headline{margin-top:18px;font-size:clamp(30px,8.6vw,46px);letter-spacing:-.03em}
-  .sub{margin-top:14px;font-size:14.5px;max-width:38ch}
-  .vsl{margin-top:20px;--vsl-ratio:16 / 9;max-height:min(300px,54vw)}
-  .cta{margin-top:24px;min-width:0;width:100%;max-width:340px;height:54px;font-size:17px}
-  .proof{margin-top:18px;gap:10px}
+  .headline{margin-top:16px;font-size:clamp(30px,8.6vw,46px);letter-spacing:-.03em}
+  .sub{margin-top:12px;font-size:14.5px;max-width:46ch}
+  /* 3:2 on phones: the card fills the column and takes back the vertical slack a
+     16:9 strip leaves in a portrait viewport. object-fit:cover trims the sides. */
+  .vsl{margin-top:16px;--vsl-ratio:3 / 2}
+  /* width-driven on phones: the card matches the CTA column exactly, and .vsl
+     absorbing every spare pixel keeps the text rows on whole pixels. */
+  .vsl-frame{width:100%;height:auto;max-height:100%}
+  .cta{margin-top:20px;min-width:0;width:100%;max-width:none;height:54px;font-size:17px}
+  .proof{margin-top:14px;gap:10px}
   .proof p{font-size:13px}
   .faces img{width:26px;height:26px}
-  .rail-inner{padding:0 14px;gap:10px;border-radius:20px 20px 0 0}
-  .rail-icon{width:20px;height:20px}
-  .rail-label{font-size:8.5px;letter-spacing:.1em}
-  .rail-main{font-size:14px}
-  .rail-arrow{width:16px}
-  .rail-item{gap:8px}
   .fields{grid-template-columns:1fr}
   .modal-card{padding:26px 20px 24px}
   .modal-card h2{font-size:21px}
 }
 
-@media (max-width:420px){
-  .rail-item .rail-icon{display:none}
-  .rail-label{font-size:8px}
-  .rail-main{font-size:12.5px}
-}
-
 @media (prefers-reduced-transparency:reduce){
-  .navbar,.rail-inner,.ticker,.modal-card,.menu-panel{
+  .navbar,.legal-hero,.ticker,.modal-card,.menu-panel{
     -webkit-backdrop-filter:none;backdrop-filter:none;background:#0e1016;
   }
   .vsl-frame{-webkit-backdrop-filter:none;backdrop-filter:none;background:rgba(255,255,255,.14)}
@@ -447,3 +417,33 @@ a{color:inherit;text-decoration:none}
 .consent{margin:14px 2px 0;font-size:11px;line-height:16px;color:var(--faint);text-align:left}
 .consent a{color:var(--cream);text-decoration:underline}
 .menu-legal{margin:8px 8px 2px;font-size:11px;line-height:15px;color:rgba(255,255,255,.42)}
+
+/* legal strip pinned to the foot of the hero */
+.legal{
+  flex:none;
+  padding:9px 20px calc(9px + env(safe-area-inset-bottom));
+  text-align:center;
+}
+.legal-hero{
+  margin:0 auto;max-width:1198px;
+  border-top:1px solid var(--line);
+  border-radius:16px 16px 0 0;
+  background:rgba(12,12,13,.86);
+  -webkit-backdrop-filter:blur(26px);
+  backdrop-filter:blur(26px);
+  pointer-events:auto;
+}
+.legal-row{
+  margin:0;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:4px 9px;
+  font-size:11px;line-height:15px;color:var(--faint);
+}
+.legal-row a{color:var(--dim);text-decoration:none}
+.legal-row a:hover{color:var(--ink);text-decoration:underline}
+.legal-sep{opacity:.4}
+
+@media (max-width:760px){
+  :root{--rail-h:64px}
+  .legal-hero{padding:8px 14px calc(8px + env(safe-area-inset-bottom))}
+  .legal-row{font-size:9.5px;line-height:13px;gap:3px 7px}
+}
