@@ -128,7 +128,7 @@ a{color:inherit;text-decoration:none}
   position:relative;z-index:10;
   height:100svh;
   max-height:100svh;
-  padding:round(clamp(88px,8.2svh,96px),1px) 20px round(clamp(48px,5.2svh,64px),1px);
+  padding:round(clamp(112px,11.4svh,124px),1px) 20px round(clamp(24px,2.6svh,36px),1px);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;
 }
@@ -378,7 +378,7 @@ a{color:inherit;text-decoration:none}
   .nav-cta{height:38px;margin-right:4px;padding:0 15px;gap:7px}
   .nav-menu{padding:0 18px}
   .orb{font-size:17px}
-  .hero{padding:70px 14px 96px;justify-content:center}
+  .hero{padding:100px 14px 66px;justify-content:center}
   .eyebrow{margin-bottom:12px}
   .ticker{padding:3px 15px 3px 3px;gap:10px}
   .ticker-tag{padding:6px 13px;font-size:12px}
