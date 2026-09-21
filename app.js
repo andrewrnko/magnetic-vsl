@@ -16,10 +16,11 @@
     }
   });
 
-  /* vsl */
+  /* vsl — absent on the no-video lander */
   const vsl = document.getElementById('vsl');
   const video = document.getElementById('vslVideo');
   const playBtn = document.getElementById('playBtn');
+  if (!vsl || !video || !playBtn) return;
   playBtn.addEventListener('click', () => {
     vsl.classList.add('playing');
     video.setAttribute('controls','');

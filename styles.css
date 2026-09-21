@@ -297,6 +297,29 @@ a{color:inherit;text-decoration:none}
 
 .rail{position:relative;z-index:20;padding:0 20px}
 
+/* ───────────────────  no-video lander (direct.html)  ─────────────────── */
+
+/* Same hero, no VSL. `.gap` takes the video's place as the one flexible child,
+   so the copy sits in the upper half, the CTA falls to thumb height, and every
+   text row still lands on a whole pixel. */
+.gap{flex:1 1 auto;min-height:0}
+
+body.no-vsl .headline{font-size:clamp(34px, min(6.6vw, 13svh), 92px)}
+body.no-vsl .sub{max-width:72ch;font-size:clamp(15px, 1.34vw, 19px)}
+/* The block is centred as one unit, so `.gap` is a fixed breath, not a spring.
+   Centring can leave the rows on a .5 offset (nothing here flexes to swallow an
+   odd remainder), so the cream CTA carries a 1px cream ring: it fills the
+   antialiased edge and the fill reads solid either way.
+   See [[fractional-offsets-soften-text]]. */
+body.no-vsl .gap{flex:none;height:round(min(4svh,34px),1px)}
+body.no-vsl .cta{box-shadow:0 0 0 1px var(--cream),0 0 30px rgba(239,231,214,.26),0 8px 24px rgba(0,0,0,.6)}
+
+@media (max-width:760px){
+  body.no-vsl .headline{font-size:clamp(30px,10.4vw,52px)}
+  body.no-vsl .sub{font-size:16px;max-width:40ch}
+  body.no-vsl .gap{height:26px}
+}
+
 /* ─────────────────────────────  apply modal  ───────────────────────── */
 
 .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;padding:20px}
