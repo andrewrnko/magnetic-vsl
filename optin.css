@@ -34,11 +34,12 @@
 
 .flow-stage{
   flex:1 1 auto;min-height:0;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
   padding:0 20px 40px;
   overflow-y:auto;
 }
-.flow-col{width:100%;max-width:520px;text-align:center}
+/* margin:auto centres it AND keeps the top reachable when it overflows */
+.flow-col{width:100%;max-width:520px;margin:auto;text-align:center}
 
 /* ── step header ── */
 
@@ -123,7 +124,7 @@
 }
 .opt:focus-visible{outline:2px solid var(--blue-lite);outline-offset:2px}
 
-.cta-block{width:100%;min-width:0;margin-top:6px}
+.cta-block{width:100%;min-width:0;max-width:none;margin-top:6px}
 .cta[disabled]{
   opacity:1;pointer-events:none;
   color:rgba(255,255,255,.34);
@@ -166,7 +167,7 @@
 
 @media (max-width:620px){
   .flow-top{padding:14px 16px}
-  .flow-stage{padding:0 16px 28px;align-items:flex-start;padding-top:8px}
+  .flow-stage{padding:8px 16px 28px}
   .step{margin-bottom:22px}
   .step-title{font-size:25px}
   .field-lg{height:58px;font-size:16px}
