@@ -19,6 +19,7 @@
   --yes:#86ad91;               /* muted sage, low chroma so it sits beside cream */
   --no:#c4776e;                /* muted clay */
   --r-pill:999px;
+  --r-card:20px;
   --r-inner:13px;
   --r-bar:7px;
   --display:"Figtree","Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"SF Pro Display",Helvetica,Arial,sans-serif;
@@ -669,23 +670,61 @@ html.js .r.in{opacity:1;transform:none}
 .fit tr:has(.fit-n) td:last-child{color:var(--faint)}
 .fit-gap td{padding-top:30px}
 
-/* ── 10 · wide case rows ───────────────────────────────────────────── */
+/* ── 10 · case cards: a logo, two lines, three figures ─────────────── */
 
-.cases{margin:40px 0 0;border-top:1px solid var(--line)}
-.case{display:grid;gap:20px;padding:26px 0;border-bottom:1px solid var(--line)}
-.case-media{
-  display:grid;place-items:center;
-  aspect-ratio:16 / 10;
-  border-radius:var(--r-inner);
-  border:1px dashed rgba(255,255,255,.12);
-  background:repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 10px,transparent 10px 20px);
+.cases{margin:34px 0 0;display:grid;gap:12px}
+.case{
+  padding:22px 20px 20px;
+  border:1px solid var(--line);border-radius:var(--r-card);
+  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008));
+  transition:border-color .28s ease,transform .28s cubic-bezier(.22,1,.36,1);
 }
-.case-media span{font-size:10px;font-weight:700;letter-spacing:.24em;color:rgba(255,255,255,.22)}
-.case-n{margin:0;font-size:10.5px;font-weight:700;letter-spacing:.22em;color:var(--faint)}
-.case-text h3{margin:10px 0 0;font-family:var(--display);font-size:21px;line-height:round(1.18em,1px);font-weight:700;letter-spacing:-.026em;color:var(--ink)}
-.case-grid{margin:18px 0 0;display:grid;gap:14px}
-.case-k{margin:0 0 5px;font-size:10.5px;font-weight:700;letter-spacing:.2em;color:var(--faint)}
-.case-grid p{margin:0;font-size:14px;line-height:round(1.5em,1px);color:var(--dim)}
+.case:hover{border-color:rgba(239,231,214,.24);transform:translateY(-2px)}
+.case-head{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding-bottom:16px;margin-bottom:16px;
+  border-bottom:1px solid var(--line);
+}
+.case-logo{
+  height:22px;width:auto;max-width:150px;object-fit:contain;
+  filter:brightness(0) invert(1);opacity:.85;
+}
+.case-trade{
+  margin:0;flex:none;
+  font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--faint);text-align:right;
+}
+.case-line{
+  margin:0 0 11px;
+  font-size:14px;line-height:round(1.5em,1px);color:var(--dim);
+}
+.case-line span{
+  display:block;margin-bottom:4px;
+  font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+}
+.figs{
+  margin:20px 0 0;padding-top:18px;
+  border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+}
+.figs div{min-width:0}
+.figs dt{
+  margin:0;
+  font-family:var(--display);
+  font-size:26px;line-height:1;font-weight:700;letter-spacing:-.04em;
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+.figs dd{
+  margin:7px 0 0;
+  font-size:10.5px;line-height:round(1.3em,1px);letter-spacing:.04em;
+  color:var(--faint);
+}
+.case-note{
+  margin:22px 0 0;max-width:52ch;
+  font-size:12px;line-height:round(1.5em,1px);color:rgba(255,255,255,.34);
+}
 
 /* ── 11 · three numerals ───────────────────────────────────────────── */
 
@@ -777,8 +816,9 @@ html{scroll-behavior:smooth}
   }
   .rule-line::before,.rule-line::after{content:"";flex:1 1 auto;height:1px;background:var(--line)}
   .rule-line span{flex:0 1 auto;max-width:40ch;text-align:center}
-  .case{grid-template-columns:340px 1fr;gap:32px;align-items:start;padding:34px 0}
-  .case-grid{grid-template-columns:repeat(3,1fr);gap:22px}
+  .cases{grid-template-columns:repeat(3,1fr);gap:14px}
+  .case{padding:26px 24px 24px}
+  .figs dt{font-size:29px}
   .three{grid-template-columns:repeat(3,1fr);gap:34px}
   .cols-body{grid-template-columns:repeat(3,1fr);gap:26px}
   .fit td{font-size:16px}
@@ -986,8 +1026,6 @@ html{scroll-behavior:smooth}
 /* ── 10 · case placeholder reads as pending, not as proof ──────────── */
 
 .case-n{color:var(--accent)}
-.case-media{border-color:rgba(239,231,214,.26)}
-.case-media span{color:rgba(239,231,214,.28)}
 
 /* ── 11 · numerals ─────────────────────────────────────────────────── */
 
