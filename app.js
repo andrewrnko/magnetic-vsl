@@ -45,6 +45,17 @@
           el.style.transitionDelay = Math.min(i, 8) * 55 + 'ms';
           el.classList.add('in');
           obs.unobserve(el);
+          /* Cards parked off-screen inside a horizontal rail never intersect
+             the viewport, so they would stay at opacity 0 and the reader would
+             swipe to a blank card. Reveal the rail as one group. */
+          const rail = el.closest('[data-reveal-group]');
+          if (rail) {
+            rail.querySelectorAll('.r').forEach((n, k) => {
+              n.style.transitionDelay = Math.min(k, 8) * 55 + 'ms';
+              n.classList.add('in');
+              obs.unobserve(n);
+            });
+          }
         });
       }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
       reveals.forEach((el) => io.observe(el));
