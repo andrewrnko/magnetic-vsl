@@ -51,33 +51,43 @@
     }
   }
 
-  /* ── infrastructure picker ── */
-  const picker = $('infraPicker');
-  const body = $('infraBody');
-  if (picker && body) {
-    const picks = Array.from(picker.querySelectorAll('.pick'));
-    const select = (btn) => {
-      if (btn.classList.contains('is-on')) return;
-      picks.forEach((p) => { p.classList.remove('is-on'); p.setAttribute('aria-selected', 'false'); });
-      btn.classList.add('is-on');
-      btn.setAttribute('aria-selected', 'true');
-      body.classList.add('fade');
-      window.setTimeout(() => {
-        body.textContent = btn.dataset.body || '';
-        body.classList.remove('fade');
-      }, reduced ? 0 : 180);
+  /* ── infrastructure reel ──
+     A self-advancing vertical list: the centred row is the live one, the rest
+     fade out under a mask. It only runs while it is on screen, and it stops
+     the moment anyone points at it. */
+  const reel = $('infraReel');
+  const reelList = $('infraList');
+  if (reel && reelList) {
+    const items = Array.from(reelList.children);
+    let i = 0, timer = null, held = false, onScreen = false;
+    const paint = () => {
+      reelList.style.setProperty('--i', String(i));
+      items.forEach((el, n) => el.classList.toggle('is-on', n === i));
     };
-    picks.forEach((btn) => {
-      btn.addEventListener('click', () => select(btn));
-      btn.addEventListener('mouseenter', () => { if (window.matchMedia('(min-width:1000px)').matches) select(btn); });
-      btn.addEventListener('focus', () => select(btn));
+    const step = () => { i = (i + 1) % items.length; paint(); };
+    const run = () => {
+      window.clearInterval(timer);
+      if (reduced || held || !onScreen) return;
+      timer = window.setInterval(step, 2200);
+    };
+    items.forEach((el, n) => {
+      el.addEventListener('click', () => { i = n; paint(); });
     });
-    picker.addEventListener('keydown', (e) => {
-      const i = picks.indexOf(document.activeElement);
-      if (i < 0) return;
-      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') { e.preventDefault(); picks[(i + 1) % picks.length].focus(); }
-      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') { e.preventDefault(); picks[(i - 1 + picks.length) % picks.length].focus(); }
-    });
+    ['mouseenter', 'focusin', 'touchstart'].forEach((e) =>
+      reel.addEventListener(e, () => { held = true; run(); }, { passive: true }));
+    ['mouseleave', 'focusout'].forEach((e) =>
+      reel.addEventListener(e, () => { held = false; run(); }));
+    document.addEventListener('visibilitychange', run);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => {
+        es.forEach((e) => { onScreen = e.isIntersecting; });
+        run();
+      }, { threshold: 0.35 }).observe(reel);
+    } else {
+      onScreen = true;
+    }
+    paint();
+    run();
   }
 
   /* ── sticky CTA ──
