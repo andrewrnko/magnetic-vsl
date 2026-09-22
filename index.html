@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=28">
+<link rel="stylesheet" href="styles.css?v=31">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -45,7 +45,6 @@
   </nav>
   <div class="menu-panel" id="menuPanel" hidden>
     <a href="#vsl">Watch the rundown</a>
-    <a href="#build">What we build</a>
     <a href="#system">The system</a>
     <a href="#infra">Infrastructure</a>
     <a href="#fit">Who this is for</a>
@@ -115,9 +114,23 @@
       <p class="body r">Not short on views. Short on reasons.</p>
 
       <div class="funnel r">
-        <div class="funnel-row"><b>Seen</b><span class="funnel-bar" style="--w:100%"></span><i>Views are cheap now</i></div>
-        <div class="funnel-row"><b>Remembered</b><span class="funnel-bar" style="--w:56%"></span><i>Only if the brand holds still</i></div>
-        <div class="funnel-row is-on"><b>Chosen</b><span class="funnel-bar" style="--w:23%"></span><i>Only if there is a reason</i></div>
+        <svg viewBox="0 0 800 300" role="img" aria-label="Everyone is seen, fewer are remembered, only the ones with a reason get chosen">
+          <path class="fn-a" d="M10 14h500l-52 78H62z"/>
+          <path class="fn-b" d="M70 106h380l-52 78H122z"/>
+          <path class="fn-c" d="M130 198h260l-52 78H182z"/>
+          <text class="fn-l" x="260" y="59" text-anchor="middle">SEEN</text>
+          <text class="fn-l" x="260" y="151" text-anchor="middle">REMEMBERED</text>
+          <text class="fn-l fn-l-on" x="260" y="243" text-anchor="middle">CHOSEN</text>
+          <g class="fn-rule">
+            <line x1="520" y1="53" x2="556" y2="53"/>
+            <line x1="460" y1="145" x2="556" y2="145"/>
+            <line x1="400" y1="237" x2="556" y2="237"/>
+          </g>
+          <text class="fn-n" x="568" y="58">Views are cheap</text>
+          <text class="fn-n" x="568" y="150">Only if the brand holds still</text>
+          <text class="fn-n fn-n-on" x="568" y="242">Only with a reason</text>
+        </svg>
+        </svg>
       </div>
 
       <div class="pair">
@@ -138,50 +151,6 @@
       </div>
 
       <p class="rule-line r"><span>Together, the business looks, feels and performs like the obvious choice.</span></p>
-    </div>
-  </section>
-
-  <!-- ══ 2 · WHAT WE BUILD — sticky header + three hairline lists ══ -->
-  <section class="sec sec-panel sec-cols" id="build">
-    <div class="wrap cols">
-      <div class="cols-head">
-        <p class="tag r">WHAT WE ACTUALLY BUILD</p>
-        <h2 class="md r">This is not a content package.</h2>
-        <p class="body r">We find the constraint holding the business back, then build around it.</p>
-      </div>
-
-      <div class="cols-body">
-        <div class="stack r">
-          <p class="stack-head"><span>01</span> Perception</p>
-          <ul class="rows">
-            <li>Positioning &amp; offer architecture</li>
-            <li>Creative direction</li>
-            <li>Short-form content</li>
-            <li>Long-form / YouTube</li>
-            <li>Paid ad creative</li>
-          </ul>
-        </div>
-        <div class="stack r">
-          <p class="stack-head"><span>02</span> Acquisition</p>
-          <ul class="rows">
-            <li>Meta acquisition</li>
-            <li>Funnels / landing pages</li>
-            <li>Retargeting</li>
-            <li>Lead qualification</li>
-            <li>CRM / follow-up systems</li>
-          </ul>
-        </div>
-        <div class="stack r">
-          <p class="stack-head"><span>03</span> Infrastructure</p>
-          <ul class="rows">
-            <li>Sales infrastructure</li>
-            <li>AI automation</li>
-            <li>Reporting / attribution</li>
-            <li>Business systems &amp; operations</li>
-            <li>Strategic growth partnerships</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -298,42 +267,6 @@
     </div>
   </section>
 
-  <!-- ══ 7 · MAGNETIC × APEX — edge-to-edge split ══ -->
-  <section class="sec sec-black sec-split" id="duo">
-    <div class="split2">
-      <div class="split2-half r">
-        <p class="split2-mark">MAGNETIC</p>
-        <p class="split2-role">Perception, creative and media</p>
-        <ul>
-          <li>Positioning</li><li>Creative direction</li><li>Content</li>
-          <li>Production</li><li>Authority</li><li>Brand perception</li>
-        </ul>
-      </div>
-      <div class="split2-x" aria-hidden="true"><span>&times;</span></div>
-      <div class="split2-half r">
-        <p class="split2-mark">APEX</p>
-        <p class="split2-role">Acquisition and performance</p>
-        <ul>
-          <li>Paid media</li><li>Funnels</li><li>Retargeting</li>
-          <li>Lead systems</li><li>Optimization</li><li>Measurable demand</li>
-        </ul>
-      </div>
-    </div>
-    <div class="wrap wrap-mid center">
-      <div class="venn r">
-        <svg viewBox="0 0 460 250" role="img" aria-label="Magnetic and Apex overlap; the overlap is one growth infrastructure">
-          <circle class="venn-a" cx="176" cy="122" r="96"/>
-          <circle class="venn-b" cx="284" cy="122" r="96"/>
-          <text class="venn-l" x="104" y="126" text-anchor="middle">MAGNETIC</text>
-          <text class="venn-l venn-l-b" x="356" y="126" text-anchor="middle">APEX</text>
-          <text class="venn-c" x="230" y="118" text-anchor="middle">ONE</text>
-          <text class="venn-c" x="230" y="134" text-anchor="middle">MACHINE</text>
-        </svg>
-      </div>
-      <p class="body body-c r">One growth infrastructure, one plan, one set of numbers.</p>
-    </div>
-  </section>
-
   <!-- ══ 8 · RELATIONSHIP — prose only ══ -->
   <section class="sec sec-panel sec-prose" id="relationship">
     <div class="wrap wrap-tight">
@@ -439,19 +372,6 @@
     </div>
   </section>
 
-  <!-- ══ 11 · HOW IT STARTS — three oversized numerals ══ -->
-  <section class="sec sec-panel sec-three" id="start">
-    <div class="wrap center">
-      <p class="tag tag-c r">HOW IT STARTS</p>
-      <h2 class="md r">Three steps, then a decision.</h2>
-    </div>
-    <div class="wrap three">
-      <div class="three-col r"><p class="three-n">01</p><h3>Apply</h3><p>Tell us where the business is now and where you want it to go.</p></div>
-      <div class="three-col r"><p class="three-n">02</p><h3>Diagnose</h3><p>We identify the highest-leverage constraint, and say so plainly.</p></div>
-      <div class="three-col r"><p class="three-n">03</p><h3>Build</h3><p>If we can materially improve the outcome, we build the system around it. If we can't, we say that instead.</p></div>
-    </div>
-  </section>
-
   <!-- ══ 12 · FAQ — sticky header left, questions right ══ -->
   <section class="sec sec-black sec-faq" id="faq">
     <div class="wrap center">
@@ -460,18 +380,54 @@
     </div>
     <div class="wrap">
       <div class="faq r" id="faqList">
-        <details class="qa"><summary>Do you only work with local businesses?</summary><div class="qa-body"><p>No. We are based in Seattle and a lot of our production work is local because shoot days are physical. Strategy, acquisition and systems work is not tied to a city.</p></div></details>
-        <details class="qa"><summary>Do you only make content?</summary><div class="qa-body"><p>No. Content is one output. Most of the value is in positioning, acquisition and the systems that catch what the content produces.</p></div></details>
-        <details class="qa"><summary>Do you run paid ads?</summary><div class="qa-body"><p>Yes. Apex runs paid media, funnels and retargeting, and we make the creative that goes into them, which is usually the part that decides the result.</p></div></details>
-        <details class="qa"><summary>Do we need existing content?</summary><div class="qa-body"><p>No. If there is usable footage we will use it. If there isn't, the first shoot fixes that.</p></div></details>
-        <details class="qa"><summary>How much content do you produce?</summary><div class="qa-body"><p>Enough to keep a thirty day buffer ahead of the schedule. The exact volume depends on the channels and the objective, not on a package tier.</p></div></details>
-        <details class="qa"><summary>How long before launch?</summary><div class="qa-body"><p>Diagnosis and positioning come first, then the first shoot, then deployment. It is measured in weeks, and we tell you the dates before we start.</p></div></details>
-        <details class="qa"><summary>Do you work with competitors?</summary><div class="qa-body"><p>Not in the same market. We take one business per category per area so the positioning work stays worth something.</p></div></details>
-        <details class="qa"><summary>Can you work with our internal team?</summary><div class="qa-body"><p>Yes, and it usually works better that way. Your team keeps the context; our system takes the repetitive load.</p></div></details>
-        <details class="qa"><summary>How involved do I need to be?</summary><div class="qa-body"><p>Heavily in the first two weeks, lightly after that. Approvals take minutes on your phone.</p></div></details>
-        <details class="qa"><summary>What does pricing look like?</summary><div class="qa-body"><p>It depends on the scope of what has to be built. We quote after the diagnosis, not before, because a number given before we understand the bottleneck is a guess.</p></div></details>
-        <details class="qa"><summary>Do you do one-off projects?</summary><div class="qa-body"><p>Rarely. Systems need time to show whether they work. Occasionally a single, well-defined build makes sense, and we will say so.</p></div></details>
-        <details class="qa"><summary>What happens after we apply?</summary><div class="qa-body"><p>We review it, and if it looks like a fit we book a call to diagnose. If it isn't, we tell you why rather than leaving it unanswered.</p></div></details>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">01</span><span class="qa-t">Do you only work with local businesses?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>No. We are based in Seattle and a lot of our production work is local because shoot days are physical. Strategy, acquisition and systems work is not tied to a city.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">02</span><span class="qa-t">Do you only make content?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>No. Content is one output. Most of the value is in positioning, acquisition and the systems that catch what the content produces.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">03</span><span class="qa-t">Do you run paid ads?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>Yes. Apex runs paid media, funnels and retargeting, and we make the creative that goes into them, which is usually the part that decides the result.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">04</span><span class="qa-t">Do we need existing content?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>No. If there is usable footage we will use it. If there isn't, the first shoot fixes that.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">05</span><span class="qa-t">How much content do you produce?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>Enough to keep a thirty day buffer ahead of the schedule. The exact volume depends on the channels and the objective, not on a package tier.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">06</span><span class="qa-t">How long before launch?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>Diagnosis and positioning come first, then the first shoot, then deployment. It is measured in weeks, and we tell you the dates before we start.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">07</span><span class="qa-t">Do you work with competitors?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>Not in the same market. We take one business per category per area so the positioning work stays worth something.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">08</span><span class="qa-t">Can you work with our internal team?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>Yes, and it usually works better that way. Your team keeps the context; our system takes the repetitive load.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">09</span><span class="qa-t">How involved do I need to be?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>Heavily in the first two weeks, lightly after that. Approvals take minutes on your phone.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">10</span><span class="qa-t">What does pricing look like?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>It depends on the scope of what has to be built. We quote after the diagnosis, not before, because a number given before we understand the bottleneck is a guess.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">11</span><span class="qa-t">Do you do one-off projects?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>Rarely. Systems need time to show whether they work. Occasionally a single, well-defined build makes sense, and we will say so.</p></div></div>
+        </div>
+        <div class="qa">
+          <button class="qa-q" type="button" aria-expanded="false"><span class="qa-i">12</span><span class="qa-t">What happens after we apply?</span><span class="qa-x" aria-hidden="true"></span></button>
+          <div class="qa-p"><div><p>We review it, and if it looks like a fit we book a call to diagnose. If it isn't, we tell you why rather than leaving it unanswered.</p></div></div>
+        </div>
       </div>
     </div>
   </section>
@@ -507,6 +463,6 @@
   </div>
 </footer>
 
-<script src="app.js?v=7"></script>
+<script src="app.js?v=8"></script>
 </body>
 </html>

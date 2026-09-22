@@ -101,6 +101,33 @@
     run();
   }
 
+  /* ── faq accordion ──
+     Buttons and panels rather than <details>, because a 0fr→1fr grid row is
+     the one height animation that works without measuring, and <details>
+     removes the panel from layout before it can transition. */
+  const faq = $('faqList');
+  if (faq) {
+    const rows = Array.from(faq.querySelectorAll('.qa'));
+    rows.forEach((row) => {
+      const btn = row.querySelector('.qa-q');
+      const panel = row.querySelector('.qa-p');
+      const id = 'qa-' + Math.random().toString(36).slice(2, 8);
+      panel.id = id;
+      btn.setAttribute('aria-controls', id);
+      btn.addEventListener('click', () => {
+        const open = row.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', String(open));
+        /* one at a time: the list stays scannable and the page does not jump */
+        if (open) rows.forEach((r) => {
+          if (r !== row && r.classList.contains('is-open')) {
+            r.classList.remove('is-open');
+            r.querySelector('.qa-q').setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+  }
+
   /* ── sticky CTA ──
      Hidden while the hero is on screen (it has its own button) and hidden
      again over the final CTA, so the page never shows the same ask twice. */
