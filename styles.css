@@ -9,6 +9,11 @@
   --faint:#87827b;
   --line:rgba(255,255,255,.085);
   --glass:rgba(255,255,255,.035);
+  --blue:#2f6bff;              /* Magnetic house blue — the only accent */
+  --blue-ink:#7fa4ff;          /* legible blue on black for type */
+  --blue-line:rgba(47,107,255,.5);
+  --blue-fill:rgba(47,107,255,.14);
+  --blue-glow:rgba(47,107,255,.34);
   --display:"Figtree","Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"SF Pro Display",Helvetica,Arial,sans-serif;
   --sans:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Helvetica,Arial,sans-serif;
   --vsl-ratio:2 / 1;   /* reference card shape; set to 16 / 9 for an uncropped 16:9 master */
@@ -638,75 +643,14 @@ html.js .r.in{opacity:1;transform:none}
 .pick.is-on::before{transform:scaleY(1)}
 .pick:focus-visible{outline:1px solid var(--cream);outline-offset:-1px}
 
-/* ── 5 · zigzag track ──────────────────────────────────────────────── */
+/* ── 5 · assembly line ────────────────────────────────────────────── */
 
 .sec-track::before{
   content:"";position:absolute;left:50%;top:26%;transform:translateX(-50%);
   width:min(720px,110vw);height:300px;
-  background:radial-gradient(50% 50% at 50% 50%,rgba(239,231,214,.075),transparent 72%);
-  filter:blur(56px);pointer-events:none;z-index:-1;
+  background:radial-gradient(50% 50% at 50% 50%,rgba(47,107,255,.14),transparent 72%);
+  filter:blur(60px);pointer-events:none;z-index:-1;
 }
-.track{position:relative;margin:44px auto 0;max-width:880px;padding:0 20px}
-.track-cap{
-  margin:0;text-align:center;
-  font-size:10.5px;font-weight:700;letter-spacing:.24em;color:var(--faint);
-}
-.track-cap::after{content:"";display:block;width:1px;height:22px;margin:10px auto 0;background:rgba(255,255,255,.22)}
-.track-out{margin-top:0}
-.track-out::after{display:none}
-.track-out::before{content:"";display:block;width:1px;height:22px;margin:0 auto 10px;background:rgba(255,255,255,.22)}
-.track-list{
-  position:relative;
-  margin:0;padding:0;list-style:none;
-  display:grid;gap:10px;
-}
-.track-list::before{
-  content:"";position:absolute;left:13px;top:0;bottom:0;width:1px;
-  background:rgba(255,255,255,.16);
-}
-.track-list li{
-  position:relative;
-  display:flex;align-items:center;gap:13px;
-  padding-left:0;
-  font-size:14.5px;line-height:1.35;color:rgba(243,236,222,.84);
-}
-.track-list li span{
-  position:relative;z-index:1;flex:none;
-  display:grid;place-items:center;
-  width:27px;height:27px;border-radius:50%;
-  border:1px solid var(--line);
-  background:#0b0b0d;
-  font-size:10.5px;font-weight:700;color:var(--cream);
-  font-variant-numeric:tabular-nums;
-}
-
-/* ── 6 · month band ────────────────────────────────────────────────── */
-
-.tl{margin:42px 0 0}
-.tl-band{
-  display:flex;
-  border:1px solid var(--line);border-radius:14px;overflow:hidden;
-}
-.tl-now,.tl-next{padding:18px 16px;min-width:0}
-.tl-now{flex:0 0 40%;background:rgba(255,255,255,.02);border-right:1px solid var(--line)}
-.tl-next{flex:1 1 auto;background:rgba(239,231,214,.10)}
-.tl-label{display:block;font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:-.015em;color:var(--ink)}
-.tl-sub{display:block;margin-top:5px;font-size:12.5px;line-height:1.4;color:var(--faint)}
-.tl-ticks{
-  margin:0;padding:0;list-style:none;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
-}
-.tl-ticks li{
-  position:relative;
-  padding:17px 4px 10px;
-  font-size:10.5px;line-height:1.3;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);
-  text-align:center;
-}
-.tl-ticks li::before{
-  content:"";position:absolute;left:50%;top:0;width:1px;height:9px;
-  background:rgba(255,255,255,.26);
-}
-.tl-loop{margin:22px 0 0;font-size:13.5px;line-height:1.5;color:var(--faint)}
 
 /* ── 7 · edge-to-edge split ────────────────────────────────────────── */
 
@@ -863,11 +807,6 @@ html{scroll-behavior:smooth}
   }
   .rule-line::before,.rule-line::after{content:"";flex:1 1 auto;height:1px;background:var(--line)}
   .rule-line span{flex:0 1 auto;max-width:40ch;text-align:center}
-  .track-list{gap:0}
-  .track-list li{padding:11px 0}
-  .tl-now,.tl-next{padding:22px 24px}
-  .tl-ticks{grid-template-columns:repeat(6,1fr)}
-  .tl-ticks li{font-size:11px;letter-spacing:.12em;padding-bottom:0}
   .case{grid-template-columns:340px 1fr;gap:32px;align-items:start;padding:34px 0}
   .case-grid{grid-template-columns:repeat(3,1fr);gap:22px}
   .three{grid-template-columns:repeat(3,1fr);gap:34px}
@@ -906,19 +845,6 @@ html{scroll-behavior:smooth}
   .cols-head{position:sticky;top:104px}
   .cols-2{grid-template-columns:400px 1fr;gap:80px}
 
-  /* the track becomes a centre line with labels alternating sides */
-  .track{max-width:760px}
-  .track-list::before{left:50%}
-  .track-list li{
-    width:50%;justify-content:flex-end;text-align:right;
-    padding:9px 26px 9px 0;
-  }
-  .track-list li span{position:absolute;right:-13.5px;top:50%;margin-top:-13.5px}
-  .track-list li:nth-child(even){
-    margin-left:50%;justify-content:flex-start;text-align:left;
-    padding:9px 0 9px 26px;
-  }
-  .track-list li:nth-child(even) span{right:auto;left:-13.5px}
 
   .steprail{padding-left:64px}
   .steprail::before{left:23px}
@@ -934,4 +860,238 @@ html{scroll-behavior:smooth}
   html{scroll-behavior:auto}
   html.js .r{opacity:1;transform:none}
   .stickycta{opacity:1;transform:none}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DRAWN OBJECTS + BLUE ACCENT (2026-09-21)
+   Blue is the only accent and it never becomes a background fill: it marks
+   numbers, live state, connectors and the thing that is already built.
+   Cream stays the reading colour and the button.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ── 0 · stat bar ──────────────────────────────────────────────────── */
+
+.statbar{border-bottom:1px solid var(--line);background:#0b0b0d}
+.statbar-in{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.stat{padding:22px 4px 20px;border-bottom:1px solid var(--line)}
+.stat:nth-child(odd){border-right:1px solid var(--line);padding-right:16px}
+.stat:nth-child(even){padding-left:18px}
+.stat:nth-child(3),.stat:nth-child(4){border-bottom:0}
+.stat-n{
+  margin:0;
+  font-family:var(--display);
+  font-size:clamp(30px,8.4vw,42px);line-height:1;font-weight:700;letter-spacing:-.04em;
+  color:var(--blue-ink);
+}
+.stat-n em{font-style:normal;font-size:.56em;letter-spacing:-.02em;opacity:.7}
+.stat-k{margin:9px 0 0;font-size:12px;line-height:1.35;letter-spacing:.02em;color:var(--faint)}
+
+/* ── 1 · thesis funnel ─────────────────────────────────────────────── */
+
+.funnel{margin:38px 0 0;display:grid;gap:0;border-top:1px solid var(--line)}
+.funnel-row{
+  display:grid;grid-template-columns:1fr;gap:9px;
+  padding:18px 0;border-bottom:1px solid var(--line);
+}
+.funnel-row b{font-family:var(--display);font-size:17px;font-weight:700;letter-spacing:-.02em;color:rgba(243,236,222,.9)}
+.funnel-row i{font-style:normal;font-size:13.5px;line-height:1.4;color:var(--faint)}
+.funnel-bar{
+  display:block;height:8px;border-radius:99px;
+  width:var(--w);
+  background:linear-gradient(90deg,rgba(255,255,255,.16),rgba(255,255,255,.05));
+}
+.funnel-row.is-on b{color:var(--ink)}
+.funnel-row.is-on i{color:var(--blue-ink)}
+.funnel-row.is-on .funnel-bar{
+  background:linear-gradient(90deg,var(--blue),rgba(47,107,255,.45));
+  box-shadow:0 0 22px var(--blue-glow);
+}
+
+/* ── 3 · system rail gets blue numerals + a blue line ──────────────── */
+
+.steprail::before{
+  background:linear-gradient(180deg,rgba(47,107,255,0),var(--blue-line) 12%,var(--blue-line) 88%,rgba(47,107,255,0));
+}
+.steprail-n{color:var(--blue-ink)}
+
+/* ── 4 · picker selection bar in blue ──────────────────────────────── */
+
+.pick::before{background:var(--blue)}
+.pick.is-on{background:rgba(47,107,255,.07)}
+.picker-body{color:rgba(243,236,222,.82)}
+
+/* ── 5 · assembly line ─────────────────────────────────────────────── */
+
+.line{margin:40px auto 0;max-width:1040px;padding:0 20px}
+.line svg{display:block;width:100%;height:auto;overflow:visible}
+.line .line-wide{display:none}
+.ln-cap{fill:var(--faint);font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.2em}
+.ln-stations circle{fill:#0b0b0d;stroke:var(--blue);stroke-width:1.5}
+.ln-stations line{stroke:rgba(47,107,255,.35);stroke-width:1}
+.ln-l{fill:rgba(243,236,222,.86);font-family:var(--sans);font-size:12.5px;font-weight:500}
+.ln-n{fill:var(--faint);font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.16em}
+
+.line-tall{position:relative;margin:0;padding:0;list-style:none;display:grid;gap:2px}
+.line-tall::before{
+  content:"";position:absolute;left:12.5px;top:16px;bottom:16px;width:2px;
+  background:linear-gradient(180deg,rgba(47,107,255,.18),rgba(47,107,255,.85) 12%,rgba(47,107,255,.85) 88%,rgba(47,107,255,.18));
+}
+.line-tall li{
+  position:relative;display:flex;align-items:center;gap:14px;
+  padding:7px 0;
+  font-size:14.5px;line-height:1.35;color:rgba(243,236,222,.86);
+}
+.line-tall li span{
+  position:relative;z-index:1;flex:none;
+  display:grid;place-items:center;
+  width:27px;height:27px;border-radius:50%;
+  border:1.5px solid var(--blue);
+  background:#0b0b0d;
+  font-size:10.5px;font-weight:700;color:var(--blue-ink);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ── 6 · month gantt ──────────────────────────────────────────────── */
+
+.tl{margin:40px 0 0}
+.tl svg{display:block;width:100%;height:auto;overflow:visible}
+.tl .tl-wide{display:none}
+
+/* phone-sized month band: same idea, drawn in CSS so the labels stay legible */
+.tl-small{position:relative;padding:22px 0 0}
+.tl-small-cap{position:absolute;left:46%;top:0;margin:0;transform:translateX(-50%)}
+.tl-small-cap span{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-ink)}
+.tl-small::after{
+  content:"";position:absolute;left:46%;top:18px;bottom:34px;width:1px;
+  background:repeating-linear-gradient(180deg,var(--blue) 0 3px,transparent 3px 7px);
+}
+.tl-small-row{position:relative;padding:0 0 16px}
+.tl-small-bar{
+  display:block;height:30px;border-radius:6px;
+  margin-left:var(--x);width:var(--w);
+}
+.tl-a{background:rgba(255,255,255,.055);border:1px solid var(--line)}
+.tl-b{background:var(--blue-fill);border:1px solid var(--blue-line)}
+.tl-c{background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.12)}
+.tl-small-row b{
+  position:absolute;left:0;top:0;height:30px;
+  display:flex;align-items:center;padding-left:12px;
+  font-family:var(--display);font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink);
+}
+.tl-small-row:nth-child(3) b{left:46%}
+.tl-small-row:nth-child(4) b{left:auto;right:0;padding:0 12px 0 0;justify-content:flex-end}
+.tl-small-ghost{color:rgba(255,255,255,.3) !important}
+.tl-small-row i{display:block;margin:7px 0 0;font-style:normal;font-size:12px;line-height:1.35;color:var(--faint)}
+.tl-small-row:nth-child(3) i{margin-left:46%}
+.tl-small-foot{margin:4px 0 0;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.tl-grid line{stroke:rgba(255,255,255,.07);stroke-width:1}
+.tl-today{stroke:var(--blue);stroke-width:1;stroke-dasharray:3 4}
+.tl-cap{fill:var(--faint);font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:.2em}
+.tl-cap-b{fill:var(--blue-ink)}
+.tl-bar-a{fill:rgba(255,255,255,.055);stroke:var(--line)}
+.tl-bar-b{fill:var(--blue-fill);stroke:var(--blue-line)}
+.tl-bar-c{fill:rgba(255,255,255,.02);stroke:rgba(255,255,255,.07);stroke-dasharray:4 4}
+.tl-name{fill:var(--ink);font-family:var(--display);font-size:13.5px;font-weight:700;letter-spacing:-.01em}
+.tl-name-b{fill:#a9c2ff}
+.tl-ghost{fill:rgba(255,255,255,.26)}
+.tl-note{fill:var(--faint);font-family:var(--sans);font-size:11px}
+.tl-span line{stroke:rgba(255,255,255,.2);stroke-width:1}
+
+.tl-steps{
+  margin:26px 0 0;padding:0;list-style:none;
+  display:flex;flex-wrap:wrap;gap:7px;
+}
+.tl-steps li{
+  padding:7px 13px;border-radius:99px;
+  border:1px solid var(--line);
+  font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);
+}
+.tl-steps li:last-child{border-color:var(--blue-line);color:var(--blue-ink)}
+
+/* ── 7 · venn ──────────────────────────────────────────────────────── */
+
+.venn{margin:34px auto 6px;max-width:440px}
+.venn svg{display:block;width:100%;height:auto}
+.venn-a{fill:rgba(255,255,255,.035);stroke:rgba(239,231,214,.5);stroke-width:1}
+.venn-b{fill:var(--blue-fill);stroke:var(--blue-line);stroke-width:1}
+.venn-l{fill:var(--ink);font-family:var(--display);font-size:13px;font-weight:800;letter-spacing:.1em}
+.venn-l-b{fill:#a9c2ff}
+.venn-c{fill:rgba(243,236,222,.92);font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.2em}
+
+/* ── 8 · escalation ladder ─────────────────────────────────────────── */
+
+.ladder{margin:32px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+.ladder li{
+  display:flex;align-items:center;gap:14px;
+  margin-left:calc(var(--i) * 9px);
+}
+.ladder-bar{
+  flex:none;height:26px;border-radius:5px;
+  width:calc(30px + var(--i) * 13px);
+  background:linear-gradient(90deg,rgba(47,107,255,calc(.16 + var(--i) * .13)),rgba(47,107,255,calc(.05 + var(--i) * .08)));
+  border:1px solid rgba(47,107,255,calc(.22 + var(--i) * .1));
+}
+.ladder b{font-size:14.5px;line-height:1.3;font-weight:500;color:rgba(243,236,222,calc(.62 + var(--i) * .055))}
+.ladder li:last-child .ladder-bar{box-shadow:0 0 20px var(--blue-glow)}
+.ladder li:last-child b{font-weight:600}
+
+/* ── 9 · fit ticks in blue ─────────────────────────────────────────── */
+
+.fit-y{color:var(--blue-ink)}
+.fit tr:has(.fit-y) td:last-child{color:rgba(243,236,222,.92)}
+
+/* ── 10 · case placeholder reads as pending, not as proof ──────────── */
+
+.case-n{color:var(--blue-ink)}
+.case-media{border-color:rgba(47,107,255,.26)}
+.case-media span{color:rgba(127,164,255,.4)}
+
+/* ── 11 · numerals ─────────────────────────────────────────────────── */
+
+.three-col .three-n{-webkit-text-stroke:1px rgba(47,107,255,.6)}
+
+/* ── 12 · faq ──────────────────────────────────────────────────────── */
+
+.qa[open] summary{color:var(--ink)}
+.qa[open] summary::before{border-color:var(--blue-line);color:var(--blue-ink)}
+
+/* ── 13 · close ────────────────────────────────────────────────────── */
+
+.sec-final::before{
+  background:radial-gradient(50% 50% at 50% 50%,rgba(47,107,255,.2),transparent 70%);
+}
+.cta-final{box-shadow:0 0 34px rgba(47,107,255,.34),0 8px 26px rgba(0,0,0,.6)}
+.cta-final:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 14px 36px rgba(0,0,0,.7),0 0 52px rgba(47,107,255,.6)}
+
+/* the tag rule picks up the accent */
+.tag::before,.tag-c::after{background:linear-gradient(90deg,transparent,var(--blue-line))}
+.tag-c::before{background:linear-gradient(90deg,transparent,var(--blue-line))}
+.tag-c::after{background:linear-gradient(270deg,transparent,var(--blue-line))}
+
+/* ══ desktop ══ */
+
+@media (min-width:700px){
+  .statbar-in{grid-template-columns:repeat(4,1fr)}
+  .stat{padding:30px 0 28px;border-bottom:0}
+  .stat:nth-child(n){border-right:1px solid var(--line);padding:30px 24px 28px}
+  .stat:first-child{padding-left:0}
+  .stat:last-child{border-right:0}
+  .funnel-row{grid-template-columns:150px 1fr 220px;align-items:center;gap:22px;padding:20px 0}
+  .funnel-row i{text-align:right}
+  .line .line-wide{display:block}
+  .line .line-tall{display:none}
+  .tl .tl-wide{display:block}
+  .tl .tl-small{display:none}
+  .ladder li{gap:18px;margin-left:calc(var(--i) * 18px)}
+  .ladder-bar{width:calc(56px + var(--i) * 26px);height:30px}
+  .tl-steps li{padding:8px 15px;font-size:11px}
+}
+
+@media (min-width:1000px){
+  .stat-n{font-size:clamp(38px,3.6vw,46px)}
+  .funnel-row{grid-template-columns:180px 1fr 260px}
+}
+
+@media (prefers-reduced-transparency:reduce){
+  .funnel-row.is-on .funnel-bar,.ladder li:last-child .ladder-bar{box-shadow:none}
 }

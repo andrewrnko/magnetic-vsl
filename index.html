@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=15">
+<link rel="stylesheet" href="styles.css?v=18">
 <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
@@ -97,14 +97,27 @@
 
 <div class="page">
 
+  <!-- ══ 0 · STAT BAR ══ -->
+  <div class="statbar">
+    <div class="wrap statbar-in">
+      <div class="stat r"><p class="stat-n">1,000<em>+</em></p><p class="stat-k">Reels shipped</p></div>
+      <div class="stat r"><p class="stat-n">30<em>d</em></p><p class="stat-k">Built ahead of schedule</p></div>
+      <div class="stat r"><p class="stat-n">15</p><p class="stat-k">Systems built in house</p></div>
+      <div class="stat r"><p class="stat-n">7</p><p class="stat-k">Steps, every account</p></div>
+    </div>
+  </div>
+
   <!-- ══ 1 · THESIS — full-bleed statement, no cards ══ -->
   <section class="sec sec-black sec-statement" id="thesis">
     <div class="wrap">
       <p class="tag r">THE THESIS</p>
       <h2 class="xl r">Attention is useless if the market doesn't know why to choose you.</h2>
-      <div class="statement-body">
-        <p class="r">Most businesses are not short on views. They are short on reasons.</p>
-        <p class="r">The market sees them, files them next to everyone else, and picks on price.</p>
+      <p class="body r">Most businesses are not short on views. They are short on reasons.</p>
+
+      <div class="funnel r">
+        <div class="funnel-row"><b>Seen</b><span class="funnel-bar" style="--w:100%"></span><i>Views are cheap now</i></div>
+        <div class="funnel-row"><b>Remembered</b><span class="funnel-bar" style="--w:56%"></span><i>Only if the brand holds still</i></div>
+        <div class="funnel-row is-on"><b>Chosen</b><span class="funnel-bar" style="--w:23%"></span><i>Only if there is a reason</i></div>
       </div>
 
       <div class="pair">
@@ -229,9 +242,38 @@
       <p class="body body-c r">A shoot day used to end with a card full of files and a week of manual sorting. Now the card is the input to a system.</p>
     </div>
 
-    <div class="track r">
-      <p class="track-cap track-in">Footage in</p>
-      <ol class="track-list">
+    <div class="line r">
+      <svg class="line-wide" viewBox="0 0 1080 260" role="img" aria-label="Footage enters the system, passes ten automated stations, and leaves scheduled">
+        <defs>
+          <linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="46" y1="0" x2="1034" y2="0">
+            <stop offset="0" stop-color="var(--blue)" stop-opacity=".15"/>
+            <stop offset=".18" stop-color="var(--blue)" stop-opacity=".9"/>
+            <stop offset=".82" stop-color="var(--blue)" stop-opacity=".9"/>
+            <stop offset="1" stop-color="var(--blue)" stop-opacity=".15"/>
+          </linearGradient>
+        </defs>
+        <rect x="46" y="129.2" width="988" height="1.6" fill="url(#lg)"/>
+        <rect x="14" y="116" width="26" height="28" rx="4" fill="none" stroke="rgba(255,255,255,.34)"/>
+        <line x1="20" y1="124" x2="34" y2="124" stroke="rgba(255,255,255,.34)"/>
+        <line x1="20" y1="130" x2="34" y2="130" stroke="rgba(255,255,255,.34)"/>
+        <text class="ln-cap" x="27" y="166" text-anchor="middle">CARD</text>
+        <path d="M1040 122l12 8-12 8z" fill="var(--blue)"/>
+        <text class="ln-cap" x="1046" y="166" text-anchor="middle">LIVE</text>
+        <g class="ln-stations">
+          <g transform="translate(140,130)"><circle r="7"/><line y1="-7" y2="-38"/><text class="ln-l" y="-48" text-anchor="middle">Organized</text><text class="ln-n" y="-62" text-anchor="middle">01</text></g>
+          <g transform="translate(239,130)"><circle r="7"/><line y1="7" y2="38"/><text class="ln-l" y="56" text-anchor="middle">Transcribed</text><text class="ln-n" y="72" text-anchor="middle">02</text></g>
+          <g transform="translate(338,130)"><circle r="7"/><line y1="-7" y2="-38"/><text class="ln-l" y="-48" text-anchor="middle">Screened</text><text class="ln-n" y="-62" text-anchor="middle">03</text></g>
+          <g transform="translate(437,130)"><circle r="7"/><line y1="7" y2="38"/><text class="ln-l" y="56" text-anchor="middle">Categorized</text><text class="ln-n" y="72" text-anchor="middle">04</text></g>
+          <g transform="translate(536,130)"><circle r="7"/><line y1="-7" y2="-38"/><text class="ln-l" y="-48" text-anchor="middle">Cut</text><text class="ln-n" y="-62" text-anchor="middle">05</text></g>
+          <g transform="translate(635,130)"><circle r="7"/><line y1="7" y2="38"/><text class="ln-l" y="56" text-anchor="middle">Captioned</text><text class="ln-n" y="72" text-anchor="middle">06</text></g>
+          <g transform="translate(734,130)"><circle r="7"/><line y1="-7" y2="-38"/><text class="ln-l" y="-48" text-anchor="middle">Checked</text><text class="ln-n" y="-62" text-anchor="middle">07</text></g>
+          <g transform="translate(833,130)"><circle r="7"/><line y1="7" y2="38"/><text class="ln-l" y="56" text-anchor="middle">Variants</text><text class="ln-n" y="72" text-anchor="middle">08</text></g>
+          <g transform="translate(932,130)"><circle r="7"/><line y1="-7" y2="-38"/><text class="ln-l" y="-48" text-anchor="middle">Approval</text><text class="ln-n" y="-62" text-anchor="middle">09</text></g>
+          <g transform="translate(1010,130)"><circle r="7"/><line y1="7" y2="38"/><text class="ln-l" y="56" text-anchor="end" dx="8">Scheduled</text><text class="ln-n" y="72" text-anchor="end" dx="8">10</text></g>
+        </g>
+      </svg>
+
+      <ol class="line-tall">
         <li><span>01</span>Organized</li>
         <li><span>02</span>Transcribed</li>
         <li><span>03</span>Screened</li>
@@ -243,7 +285,6 @@
         <li><span>09</span>Routed for approval</li>
         <li><span>10</span>Scheduled</li>
       </ol>
-      <p class="track-cap track-out">Published</p>
     </div>
 
     <div class="wrap wrap-mid center">
@@ -259,14 +300,56 @@
       <p class="body body-left r">We run a thirty day production buffer. Next month is built before this month ends, so nothing ships in a panic and nothing ships thin.</p>
 
       <div class="tl r">
-        <div class="tl-band">
-          <div class="tl-now"><span class="tl-label">This month</span><span class="tl-sub">publishing</span></div>
-          <div class="tl-next"><span class="tl-label">Next month</span><span class="tl-sub">already shot, cut and approved</span></div>
+        <svg class="tl-wide" viewBox="0 0 860 258" role="img" aria-label="This month publishes while next month is already shot, cut and approved, thirty days ahead">
+          <g class="tl-grid">
+            <line x1="40" y1="30" x2="40" y2="210"/>
+            <line x1="250" y1="30" x2="250" y2="210"/>
+            <line x1="460" y1="30" x2="460" y2="210"/>
+            <line x1="670" y1="30" x2="670" y2="210"/>
+            <line x1="840" y1="30" x2="840" y2="210"/>
+          </g>
+          <line class="tl-today" x1="250" y1="18" x2="250" y2="222"/>
+          <text class="tl-cap tl-cap-b" x="250" y="14" text-anchor="middle">TODAY</text>
+
+          <rect class="tl-bar-a" x="40" y="58" width="210" height="34" rx="6"/>
+          <text class="tl-name" x="54" y="80">This month</text>
+          <text class="tl-note" x="264" y="80">publishing now</text>
+
+          <rect class="tl-bar-b" x="250" y="120" width="420" height="34" rx="6"/>
+          <text class="tl-name tl-name-b" x="264" y="142">Next month</text>
+          <text class="tl-note" x="684" y="142">already shot, cut, approved</text>
+
+          <rect class="tl-bar-c" x="670" y="182" width="170" height="34" rx="6"/>
+          <text class="tl-name tl-ghost" x="684" y="204">The month after</text>
+
+          <g class="tl-span">
+            <line x1="40" y1="244" x2="250" y2="244"/>
+            <line x1="40" y1="238" x2="40" y2="250"/>
+            <line x1="250" y1="238" x2="250" y2="250"/>
+            <text class="tl-cap" x="145" y="234" text-anchor="middle">30 DAYS OF BUFFER</text>
+          </g>
+        </svg>
+
+        <div class="tl-small" aria-hidden="true">
+          <p class="tl-small-cap"><span>Today</span></p>
+          <div class="tl-small-row">
+            <span class="tl-small-bar tl-a" style="--x:0%;--w:46%"></span>
+            <b>This month</b><i>publishing now</i>
+          </div>
+          <div class="tl-small-row">
+            <span class="tl-small-bar tl-b" style="--x:46%;--w:54%"></span>
+            <b>Next month</b><i>already shot, cut, approved</i>
+          </div>
+          <div class="tl-small-row">
+            <span class="tl-small-bar tl-c" style="--x:82%;--w:18%"></span>
+            <b class="tl-small-ghost">The month after</b>
+          </div>
+          <p class="tl-small-foot">30 days of buffer, always</p>
         </div>
-        <ol class="tl-ticks">
+
+        <ol class="tl-steps">
           <li>Strategy</li><li>Shoot</li><li>Edit</li><li>Approve</li><li>Deploy</li><li>Learn</li>
         </ol>
-        <p class="tl-loop">and the cycle starts again before the month does</p>
       </div>
     </div>
   </section>
@@ -293,6 +376,16 @@
       </div>
     </div>
     <div class="wrap wrap-mid center">
+      <div class="venn r">
+        <svg viewBox="0 0 460 250" role="img" aria-label="Magnetic and Apex overlap; the overlap is one growth infrastructure">
+          <circle class="venn-a" cx="176" cy="122" r="96"/>
+          <circle class="venn-b" cx="284" cy="122" r="96"/>
+          <text class="venn-l" x="104" y="126" text-anchor="middle">MAGNETIC</text>
+          <text class="venn-l venn-l-b" x="356" y="126" text-anchor="middle">APEX</text>
+          <text class="venn-c" x="230" y="118" text-anchor="middle">ONE</text>
+          <text class="venn-c" x="230" y="134" text-anchor="middle">MACHINE</text>
+        </svg>
+      </div>
       <p class="body body-c r">One growth infrastructure, one plan, one set of numbers.</p>
     </div>
   </section>
@@ -302,7 +395,17 @@
     <div class="wrap wrap-tight">
       <p class="tag r">THE RELATIONSHIP</p>
       <h2 class="xl r">We don't want to be another vendor.</h2>
-      <p class="prose r">Most engagements start with content and acquisition. The ones that work tend not to stay there. Where it is warranted, and only where both sides want it, the work goes further into <em>infrastructure</em>, <em>sales systems</em>, <em>hiring</em>, <em>operations</em>, <em>strategic partnerships</em>, <em>revenue share</em>, <em>equity</em>, <em>acquisitions</em>, and eventually <em>exits</em>.</p>
+      <p class="prose r">Most engagements start with content and acquisition. The ones that work tend not to stay there.</p>
+
+      <ol class="ladder r">
+        <li style="--i:0"><span class="ladder-bar"></span><b>Content &amp; ads</b></li>
+        <li style="--i:1"><span class="ladder-bar"></span><b>Infrastructure</b></li>
+        <li style="--i:2"><span class="ladder-bar"></span><b>Sales systems</b></li>
+        <li style="--i:3"><span class="ladder-bar"></span><b>Operations &amp; hiring</b></li>
+        <li style="--i:4"><span class="ladder-bar"></span><b>Strategic partnership</b></li>
+        <li style="--i:5"><span class="ladder-bar"></span><b>Revenue share</b></li>
+        <li style="--i:6"><span class="ladder-bar"></span><b>Equity, acquisition, exit</b></li>
+      </ol>
       <p class="prose prose-dim r">None of that is promised and none of it is the starting point. It is simply where a good partnership is allowed to go.</p>
     </div>
   </section>
