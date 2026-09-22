@@ -1,6 +1,11 @@
-# Magnetic LLC — conversion hero
+# Magnetic LLC — Magnetic × Apex
 
-One screen. Headline, VSL, CTA, proof, value rail. Nothing below the fold.
+`index.html` is the hero (one screen: headline, VSL, CTA, proof) followed by
+the full page: thesis, what we build, the seven-step system, the
+infrastructure picker, the production engine, the thirty day buffer, the
+Magnetic/Apex split, the relationship, fit, case-study placeholders, how it
+starts, FAQ and the final CTA. `direct.html` is still the one-screen,
+no-video lander.
 Cloned from the TRW hero composition and rebuilt on the Magnetic brand; the
 funnel behind the button follows the whiteboard playbook (apply → three
 qualifying questions → book → what-to-expect).
@@ -51,3 +56,42 @@ Real Chrome at 1440×1094 (reference size), 1440×806 (laptop) and 390×844.
 Video card measures 768×384 at x=336; the reference is 767×384 at x=335.
 Form filled and submitted in-browser, lead written to disk, 400/422 branches
 checked with curl, console clean, no horizontal scroll, no page scroll.
+
+## The long page (added 2026-09-21)
+
+Section styles live at the end of `styles.css` under `LONG PAGE`. Everything
+above that block is the hero and is untouched.
+
+- **Reveals** — `.r` elements fade up on intersection, staggered by index
+  inside their parent. `<html class="js">` is set inline in `<head>` so the
+  hidden state only applies when the script that reveals them is running;
+  with JS off the page renders fully visible.
+- **Sticky CTA** — `#stickyCta` shows once the hero leaves the viewport and
+  hides again over the final CTA, so the same ask never appears twice. It is
+  `display:none` at ≥1000px, where the navbar button carries it.
+- **Infrastructure picker** — click, hover (desktop) or arrow-key a row; the
+  body text swaps under it. Data lives in `data-body` on each `.pick`.
+- **Case studies** — deliberate placeholders. Company / Problem / What we
+  changed / Result / media slot, with no invented metrics.
+- **`scroll-behavior:smooth`** is on `html`, so programmatic `window.scrollTo`
+  animates. Audit scripts must pass `behavior:'instant'` or reveals will not
+  have fired by the time they measure.
+
+### Verified 2026-09-21
+
+Real Chrome at 375×667, 390×844, 768×1024, 1440×900 and 1920×1080, and again
+against the deployed https://magnetic-vsl.pages.dev: 13 sections, 19 cards,
+12 FAQ rows, 15 picker rows, all 79 reveals fire, zero horizontal overflow,
+zero console errors, no 4xx, picker and accordion interact.
+
+### Deploying
+
+Cloudflare Pages is a **direct upload** project, not git-connected. Pushing
+the GitHub mirror updates `andrewrnko.github.io/magnetic-vsl` only. For
+`magnetic-vsl.pages.dev`: pull an upload token from
+`/accounts/{id}/pages/projects/magnetic-vsl/upload-token`, run
+`promobox-vsl/tools/cfpages.js <dir>` with `CF_PAGES_JWT` set, then POST the
+manifest it writes to `/pages/projects/magnetic-vsl/deployments` as
+multipart. **Stage a copy without `.git` first** — `cfpages.js` skips dotted
+*files* but walks dotted *directories*, so pointing it at a repo would
+publish `.git`.
