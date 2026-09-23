@@ -158,6 +158,14 @@
     paint();
   }
 
+  /* ── scroll cue (phones) ── gone the moment the reader starts scrolling */
+  const cue = $('scrollCue');
+  if (cue) {
+    const cuePaint = () => cue.classList.toggle('gone', window.scrollY > 24);
+    window.addEventListener('scroll', cuePaint, { passive: true });
+    cuePaint();
+  }
+
   /* ── vsl (absent on the no-video lander) ── */
   const vsl = $('vsl');
   const video = $('vslVideo');
