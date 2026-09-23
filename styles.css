@@ -724,23 +724,32 @@ html.js .r.in{opacity:1;transform:none}
 .xl-final{max-width:16ch}
 .cta-final{display:inline-flex;margin:var(--s7) 0 0}
 
-/* ── sticky apply bar (phones only) ────────────────────────────────── */
+/* ── sticky apply bar ──────────────────────────────────────────────
+   A row, not a pill: the capacity line carries the same scarcity the hero
+   ticker states, and the button repeats the one ask. */
 
-.stickycta{
-  position:fixed;left:14px;right:14px;
-  bottom:calc(14px + env(safe-area-inset-bottom));
-  z-index:60;
-  display:flex;align-items:center;justify-content:center;gap:var(--s2);
-  height:54px;border-radius:999px;
-  background:var(--cream);color:#0a0a0a;
-  font-family:var(--display);font-size:var(--t-lead);font-weight:700;letter-spacing:-.01em;
-  box-shadow:0 0 34px rgba(239,231,214,.26),0 10px 30px rgba(0,0,0,.66);
-  opacity:0;transform:translateY(14px);
+.sticky{
+  position:fixed;left:0;right:0;
+  bottom:0;z-index:60;
+  padding:10px 20px calc(10px + env(safe-area-inset-bottom));
+  border-top:1px solid var(--line);
+  background:rgba(6,7,10,.88);
+  -webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);
+  opacity:0;transform:translateY(100%);
   transition:opacity .3s ease,transform .3s cubic-bezier(.22,1,.36,1);
 }
-.stickycta svg{stroke:currentColor;flex:none}
-.stickycta.show{opacity:1;transform:none}
-body.has-sticky footer.rail{padding-bottom:var(--s11)}
+.sticky.show{opacity:1;transform:none}
+.sticky-row{
+  width:100%;max-width:1198px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--s5);
+}
+.sticky-text{font-size:var(--t-small);line-height:1.3;color:var(--dim)}
+.cta-sticky{min-width:0;height:48px;padding:0 var(--s6);font-size:var(--t-body)}
+@media (max-width:760px){
+  .sticky-text{display:none}
+  .cta-sticky{flex:1 1 auto;height:52px}
+}
+body.has-sticky .sec-foot{padding-bottom:var(--s12)}
 
 /* anchors clear the fixed navbar */
 html{scroll-behavior:smooth}
@@ -791,14 +800,12 @@ html{scroll-behavior:smooth}
   .steprail-n{left:-64px;width:47px}
   .steprail li{padding-bottom:var(--s8)}
 
-  .stickycta{display:none}
   body.has-sticky footer.rail{padding-bottom:0}
 }
 
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   html.js .r{opacity:1;transform:none}
-  .stickycta{opacity:1;transform:none}
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -1223,4 +1230,222 @@ html{scroll-behavior:smooth}
 
 @media (prefers-reduced-motion:reduce){
   .qa-p,.qa-x,.qa-p p{transition:none}
+}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   CLIPCUT STRUCTURE (2026-09-22)
+   The page now runs in the reference's order: hero (learn / apply side by
+   side) → roster + counts → thesis → what we build → the machine →
+   case studies → fit → questions → apply → terms. Every block that ends a
+   beat repeats the same ask, so the button is never more than a screen away.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:90;
+  padding:10px 16px;border-radius:0 0 var(--r-bar) 0;
+  background:var(--cream);color:#0a0a0a;font-size:var(--t-small);font-weight:600;
+}
+.skip:focus{left:0}
+
+/* ── hero: two numbered columns ──────────────────────────────────── */
+
+.hero-row{
+  flex:1 1 auto;min-height:0;
+  width:100%;max-width:1198px;margin:round(min(2.2svh,28px),1px) auto 0;
+  display:flex;align-items:stretch;gap:var(--s7);
+}
+.hero-col{display:flex;flex-direction:column;min-width:0;min-height:0}
+.hero-col-vsl{flex:1 1 auto}
+.hero-col-apply{flex:0 0 320px}
+.col-head{
+  flex:none;margin:0 0 var(--s3);
+  display:flex;align-items:center;gap:var(--s2);
+  font-size:var(--t-micro);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);text-align:left;
+}
+.col-head b{color:var(--cream);font-weight:700}
+.hero-row .vsl{margin:0}
+
+.apply-card{
+  flex:1 1 auto;min-height:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:var(--s6) var(--s5);
+  border:1px solid var(--line);border-radius:var(--r-card);
+  background:var(--glass);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  text-align:left;
+}
+.apply-steps{list-style:none;margin:0;padding:0;counter-reset:ap}
+.apply-steps li{
+  position:relative;padding:0 0 var(--s4) var(--s7);counter-increment:ap;
+}
+.apply-steps li:last-child{padding-bottom:0}
+.apply-steps li::before{
+  content:counter(ap);position:absolute;left:0;top:0;
+  width:22px;height:22px;border-radius:999px;
+  display:grid;place-items:center;
+  border:1px solid var(--accent-line);
+  font-size:11px;font-weight:700;color:var(--cream);
+}
+.apply-steps b{display:block;font-family:var(--display);font-size:var(--t-small);font-weight:700;color:var(--ink)}
+.apply-steps span{display:block;margin-top:2px;font-size:var(--t-micro);line-height:1.45;color:var(--dim)}
+.apply-note{margin:var(--s3) 0 0;font-size:11px;line-height:1.4;color:var(--faint);text-align:center}
+
+@media (max-width:999px){
+  .hero{height:auto;max-height:none}
+  .hero-row{flex-direction:column;gap:var(--s6)}
+  .hero-col-apply{flex:none}
+  .hero-col-vsl .vsl{flex:none;aspect-ratio:var(--vsl-ratio)}
+}
+
+/* ── proof strip: roster marquee over the counts ─────────────────── */
+
+.sec-proofstrip{position:relative;z-index:10;border-top:1px solid var(--line)}
+.marquee{
+  overflow:hidden;padding:var(--s7) 0;
+  border-bottom:1px solid var(--line);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);
+}
+.marquee-track{
+  display:flex;align-items:center;gap:var(--s12);width:max-content;
+  animation:roster 46s linear infinite;
+}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.roster-item{flex:none;display:block}
+.marquee-track img{
+  height:26px;width:auto;display:block;
+  filter:grayscale(1) brightness(1.7);opacity:.66;
+}
+@keyframes roster{to{transform:translateX(-33.333%)}}
+@media (min-width:760px){.marquee-track img{height:32px}}
+@media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+/* the counts sit inside the strip, so the roster and the numbers read as
+   one proof block instead of two stacked bars */
+.sec-proofstrip .statbar{border-bottom:1px solid var(--line);border-top:0}
+
+/* ── the repeated ask ────────────────────────────────────────────── */
+
+.cta-block{margin:var(--s10) 0 0;display:flex;justify-content:center}
+.sec-rail .cta-block,.sec-ahead .cta-block,.sec-prose .cta-block{margin-top:var(--s9)}
+
+/* ── terms ───────────────────────────────────────────────────────── */
+
+.sec-terms{padding:var(--s10) 0 var(--s9);border-top:1px solid var(--line)}
+.disclaimer{margin:0 0 var(--s4);font-size:var(--t-micro);line-height:round(1.6em,1px);color:var(--faint)}
+.disclaimer:last-child{margin-bottom:0}
+.disclaimer b{color:var(--dim);font-weight:600}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   SIX BEATS (2026-09-22)
+   hero → roster → everything we do → case studies → fit check → FAQ → foot.
+   Every beat ends with the same button. Nothing else on the page.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.sub-free{
+  flex:none;margin:round(min(.9svh,10px),1px) 0 0;
+  font-size:clamp(13px,1.15vw,16px);line-height:1.45;font-weight:450;
+  color:var(--faint);
+}
+
+/* the shoot-day step is the one that costs us, so it reads loudest */
+.steprail li.is-featured h3{color:#fff}
+.steprail li.is-featured .steprail-n{
+  color:#0a0a0a;background:var(--cream);border-color:var(--cream);
+}
+
+/* ── case studies ────────────────────────────────────────────────── */
+
+.sec-cases .md{margin-bottom:var(--s10)}
+.case-row{
+  display:grid;grid-template-columns:1fr;gap:var(--s7);
+  padding:var(--s9) 0;border-top:1px solid var(--line);
+  align-items:center;
+}
+.case-who{
+  margin:0 0 var(--s3);font-size:var(--t-label);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--faint);
+}
+.case-quote{
+  margin:0;font-family:var(--display);
+  font-size:clamp(23px,5.4vw,31px);line-height:round(1.14em,1px);
+  font-weight:700;letter-spacing:-.03em;color:var(--ink);
+}
+.case-row p:not(.case-who){
+  margin:var(--s4) 0 0;max-width:52ch;
+  font-size:var(--t-small);line-height:round(1.6em,1px);color:var(--dim);
+}
+
+.shot-frame{
+  border:1px solid var(--line);border-radius:var(--r-inner);
+  background:#0b0b0d;overflow:hidden;
+}
+.shot-bar{
+  padding:9px var(--s4);border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.03);
+  font-size:11px;letter-spacing:.01em;color:var(--faint);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.shot-logo{
+  aspect-ratio:16 / 10;display:grid;place-items:center;padding:var(--s7);
+}
+/* every mark normalises to one optical height, so a 32px square logo does
+   not sit next to a 150px wordmark */
+.shot-logo img{height:44px;width:auto;max-width:72%;object-fit:contain;opacity:.9}
+.shot-logo-self span{
+  font-family:var(--display);font-size:21px;font-weight:700;
+  letter-spacing:-.03em;color:var(--ink);
+}
+
+.case-grid{
+  display:grid;grid-template-columns:1fr;gap:var(--s7);
+  padding:var(--s9) 0 0;border-top:1px solid var(--line);
+}
+.case-body h3{
+  margin:var(--s5) 0 0;font-family:var(--display);font-size:var(--t-h3);
+  line-height:round(1.18em,1px);font-weight:700;letter-spacing:-.028em;color:var(--ink);
+}
+.case-body p{margin:var(--s2) 0 0;font-size:var(--t-small);line-height:round(1.58em,1px);color:var(--dim)}
+.case-note{margin:var(--s8) 0 0;font-size:var(--t-micro);line-height:1.6;color:var(--faint)}
+
+@media (min-width:860px){
+  .case-row{grid-template-columns:1.1fr .9fr;gap:var(--s11)}
+  /* the media card is a card, not a wall: cap it so the row does not turn
+     into a cavern next to four lines of copy */
+  .case-media{width:100%;max-width:420px;margin-left:auto}
+  .case-flip .case-media{margin:0 auto 0 0}
+  .case-flip .case-copy{order:2}
+  .case-grid{grid-template-columns:repeat(3,1fr);gap:var(--s8)}
+}
+
+/* ── fit check ───────────────────────────────────────────────────── */
+
+.who-list{
+  margin:var(--s8) 0 0;padding:0;list-style:none;
+  border-top:1px solid var(--line);
+}
+.who-list li{
+  position:relative;padding:var(--s5) 0 var(--s5) var(--s8);
+  border-bottom:1px solid var(--line);
+  font-size:var(--t-lead);line-height:round(1.45em,1px);color:var(--ink);
+}
+.who-list li::before{
+  content:"";position:absolute;left:var(--s3);top:calc(var(--s5) + .55em);
+  width:7px;height:7px;border-radius:999px;background:var(--cream);
+}
+.who-close{margin:var(--s7) 0 0;font-size:var(--t-body);line-height:1.6;color:var(--dim);text-align:center}
+
+/* ── foot ────────────────────────────────────────────────────────── */
+
+.sec-foot{padding:var(--s11) 0 var(--s12);border-top:1px solid var(--line)}
+.sec-foot .legal-row{
+  margin:var(--s9) 0 0;padding-top:var(--s6);border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);
+  font-size:var(--t-micro);color:var(--faint);
+}
+.legal-brand{
+  font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+  font-size:var(--t-small);color:var(--ink);margin-right:var(--s2);
 }

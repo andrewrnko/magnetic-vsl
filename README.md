@@ -95,3 +95,44 @@ manifest it writes to `/pages/projects/magnetic-vsl/deployments` as
 multipart. **Stage a copy without `.git` first** — `cfpages.js` skips dotted
 *files* but walks dotted *directories*, so pointing it at a repo would
 publish `.git`.
+
+## Structure (rebuilt 2026-09-22)
+
+Rebuilt on the ClipCut page structure — its sequence and the job each section
+does — carrying Magnetic's own offer and clients. Header untouched.
+
+| # | Section | Job |
+|---|---|---|
+| 1 | Hero | The offer, then two numbered columns: **#1 learn how we do it** (VSL) / **#2 apply to be a client** (three-step card + button). Proof line under both. One screen at ≥1000px, stacks below. |
+| 2 | Roster | Client logo marquee over four production counts. |
+| 3 | Everything we do for you | Seven deliverables on the numbered rail, 04 (the shoot days) featured. → CTA |
+| 4 | Case studies | Three alternating rows with real counts, then a 3-up grid (Larchmont, LUXE, and us). → CTA |
+| 5 | Fit check | "This works best if you are:" — three lines. → CTA |
+| 6 | FAQ | Six questions. → CTA |
+| 7 | Foot | Guarantee terms, disclaimer, sales-figures disclaimer, then `Magnetic LLC · Built to be the obvious choice. · Privacy · Terms`. |
+
+Every beat ends with the same button; the sticky bar (capacity line + button)
+carries it between beats and hides over the foot.
+
+### The offer
+
+**50 Booked Estimates Guaranteed in 90 Days. / Completely Done For You. / We
+work for free until you do.**
+
+The number appears in exactly two places — the `<h1>` in `index.html` and the
+guarantee-terms paragraph in the foot — so changing it is a two-line edit.
+Nothing else on the page depends on it.
+
+### Claims
+
+Production counts (285/168/9, 97/53/10, 81/59/7) come from the queue. No
+revenue, lead or follower figures are stated for any client. The case media
+slots hold the client mark on a framed card; swap in real profile or reel
+stills when there are ones we can attribute with certainty.
+
+### Retired, not deleted
+
+The thesis, infrastructure reel, thirty-day-buffer timeline and relationship
+ladder are gone from `index.html`; their CSS is still in `styles.css` under
+the LONG PAGE block, so any of them can come back by pasting the markup.
+
