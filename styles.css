@@ -1511,3 +1511,51 @@ html,body{overflow-x:clip;max-width:100vw}
   .sec-rail .steprail p{max-width:58ch}
   .sec-rail .steprail li{padding-bottom:var(--s8)}
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   UI PASS (2026-09-23) — standard VSL order: offer → video → the ask
+   directly under it → proof. The two-column hero put a lone button in an
+   empty card that the button overflowed; the video is the page, so it
+   centres and the CTA sits where the eye lands when the play button ends.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.sub-lead span{display:block;margin-top:4px;font-weight:450;font-size:.84em;color:var(--dim)}
+.hero .vsl{margin:round(min(2.6svh,30px),1px) 0 0}
+.cta-hero{margin-top:round(min(2.6svh,28px),1px);min-width:360px;height:60px}
+.hero .proof{margin-top:round(min(1.8svh,18px),1px)}
+
+/* proof beat sits directly under the hero */
+.sec-clients{padding-top:var(--s11)}
+@media (min-width:1000px){.sec-clients{padding:96px 0 112px}}
+.logo-lockup{display:inline-flex;align-items:center;gap:10px}
+.sec-clients .logo-lockup img{height:34px;max-height:none;width:auto}
+.logo-lockup span{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:.04em;color:#fff;opacity:.6;white-space:nowrap}
+.sec-clients .logo-cell:hover .logo-lockup span{opacity:1}
+.sec-clients .logo-cell img{opacity:.72}
+
+/* readable secondary copy: 14px #aca69c on black was too small and too dim */
+.steprail p{font-size:15.5px;color:#bdb7ac}
+.body{color:#bdb7ac}
+.qa-i{color:var(--dim)}
+
+/* fit list: a centred column under a centred heading, not a full-bleed table */
+.who-narrow{max-width:720px;margin-left:auto;margin-right:auto}
+.who-close{max-width:720px;margin-left:auto;margin-right:auto}
+
+/* sticky bar is a phone affordance; desktop already has the nav button */
+@media (min-width:761px){.sticky{display:none}}
+
+@media (max-width:760px){
+  .cta-hero{min-width:0;width:100%;height:58px;margin-top:16px}
+  .hero .proof{flex-wrap:wrap;justify-content:center;text-align:center}
+  .sub-lead span{font-size:.9em}
+  .logo-lockup span{font-size:15px}
+  .sec-clients .logo-lockup img{height:26px}
+}
+@media (max-width:999px){
+  .hero .vsl{flex:none;width:100%;max-width:768px}
+  .hero .vsl-frame{width:100%;height:auto;max-height:none}
+}
+/* the card's 80px drop shadow sits on z-index 1 and was greying the button under it */
+.cta-hero,.hero .proof{position:relative;z-index:2}
+@media (max-width:760px){.sec-clients{padding-top:var(--s6)}}

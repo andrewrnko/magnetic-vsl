@@ -133,30 +133,27 @@
      again over the final CTA, so the page never shows the same ask twice. */
   const sticky = $('stickyCta');
   const hero = $('top');
-  const final = $('apply');
   if (sticky && hero) {
     document.body.classList.add('has-sticky');
     sticky.removeAttribute('hidden');
-    const state = { hero: true, final: false };
+    /* Any in-page ask on screen (the hero, a section button, the legal foot)
+       hides the bar, so the reader never sees two identical buttons at once. */
+    const heroAsk = $('start') || hero;
+    const blockers = [heroAsk, ...document.querySelectorAll('.cta-block, .sec-foot')];
+    const seen = new Set();
     const paint = () => {
-      const show = !state.hero && !state.final;
+      const show = seen.size === 0;
       sticky.classList.toggle('show', show);
       sticky.setAttribute('aria-hidden', String(!show));
-      sticky.tabIndex = show ? 0 : -1;
+      sticky.inert = !show;
     };
     if ('IntersectionObserver' in window) {
-      new IntersectionObserver((es) => {
-        es.forEach((e) => { state.hero = e.isIntersecting; });
+      const io = new IntersectionObserver((es) => {
+        es.forEach((e) => { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
         paint();
-      }, { threshold: 0.18 }).observe(hero);
-      if (final) {
-        new IntersectionObserver((es) => {
-          es.forEach((e) => { state.final = e.isIntersecting; });
-          paint();
-        }, { threshold: 0.3 }).observe(final);
-      }
-    } else {
-      state.hero = false;
+      }, { threshold: 0 });
+      blockers.forEach((el) => io.observe(el));
+      seen.add(heroAsk);
     }
     paint();
   }
