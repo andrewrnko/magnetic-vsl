@@ -1473,3 +1473,41 @@ html,body{overflow-x:clip;max-width:100vw}
   .vsl,.vsl-frame{max-width:100%}
   .nav{padding-left:14px;padding-right:14px}
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   DESKTOP LAYOUT (2026-09-23)
+   Two defects on a wide screen: the hero row lost its width cap to the
+   overflow fix above (`.hero-row{max-width:100%}` overrode 1198px), so the
+   apply card ran off the right edge; and the service rail sat in a narrow
+   left column with half the screen empty beside it.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* keep the side-scroll fix AND the cap: whichever is smaller wins */
+.hero-row{max-width:min(1198px,100%)}
+
+@media (min-width:1000px){
+  /* the card hugs its content and centres against the video instead of
+     stretching into a 600px empty box */
+  /* #2 keeps its label level with #1; only the card floats to the middle */
+  .hero-col-apply{flex:0 0 340px}
+  .apply-card{flex:0 0 auto;margin-block:auto}
+
+  /* service: header column, rail column, ask across the bottom */
+  .sec-rail .wrap-mid{
+    max-width:1180px;
+    display:grid;
+    grid-template-columns:minmax(280px,360px) 1fr;
+    /* rows 1-3 hug the header; row 4 is the slack the tall rail creates, so
+       the three header lines stay stacked together instead of spreading */
+    grid-template-rows:auto auto auto 1fr;
+    column-gap:var(--s12);
+    align-items:start;
+  }
+  .sec-rail .tag{grid-column:1;grid-row:1;margin-top:6px}
+  .sec-rail .md{grid-column:1;grid-row:2;margin-top:var(--s4)}
+  .sec-rail .body-left{grid-column:1;grid-row:3;max-width:34ch}
+  .sec-rail .steprail{grid-column:2;grid-row:1 / span 4;margin:0}
+  .sec-rail .cta-block{grid-column:1 / -1;grid-row:5;margin-top:var(--s10)}
+  .sec-rail .steprail p{max-width:58ch}
+  .sec-rail .steprail li{padding-bottom:var(--s8)}
+}
