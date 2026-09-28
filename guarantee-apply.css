@@ -1,0 +1,32 @@
+/* Apply flow for the guarantee lander (guarantee-apply.html). It is optin.html
+   with every exit pointed back at /guarantee and a theme that follows the
+   lander's switch. Light is the default; a saved 'dark' keeps it dark.
+   Selections use the lander's blue in both themes. */
+
+.g-apply{--sel:#2f6bff;--sel-ink:#ffffff;--sel-glow:rgba(47,107,255,.28)}
+
+.g-apply .bar.on{background:var(--sel);box-shadow:0 0 12px var(--sel-glow)}
+.g-apply .opt.sel,.g-apply .day.sel,.g-apply .slot-btn.sel{
+  border-color:var(--sel);background:var(--sel);color:var(--sel-ink);box-shadow:0 8px 22px var(--sel-glow);
+}
+.g-apply .opt:focus-visible,.g-apply .day:focus-visible,.g-apply .slot-btn:focus-visible{outline-color:var(--sel)}
+.g-apply .field-lg:focus,.g-apply .field:focus{border-color:rgba(47,107,255,.7);box-shadow:0 0 0 3px rgba(47,107,255,.14)}
+
+/* ── light ── */
+[data-theme="light"] .g-apply .beam{display:none}
+[data-theme="light"] .g-apply .scene-quiet .vignette{background:none}
+[data-theme="light"] .g-apply .flow-back:hover,[data-theme="light"] .g-apply .flow-close:hover{border-color:rgba(17,18,20,.22);background:rgba(17,18,20,.05)}
+[data-theme="light"] .g-apply .step-badge::before{background:linear-gradient(90deg,transparent,rgba(17,18,20,.22))}
+[data-theme="light"] .g-apply .step-badge::after{background:linear-gradient(270deg,transparent,rgba(17,18,20,.22))}
+[data-theme="light"] .g-apply .bar:not(.on){background:rgba(17,18,20,.1)}
+[data-theme="light"] .g-apply .field-lg:focus,[data-theme="light"] .g-apply .field:focus{background:#fff}
+[data-theme="light"] .g-apply .opt:hover,[data-theme="light"] .g-apply .slot-btn:hover:not(:disabled){border-color:rgba(17,18,20,.24);background:#fff}
+[data-theme="light"] .g-apply .day:hover{border-color:rgba(17,18,20,.24)}
+[data-theme="light"] .g-apply .cta[disabled]{background:#e3e5e9;color:#9a9ea5;box-shadow:none}
+[data-theme="light"] .g-apply .form-error{color:#c62828}
+[data-theme="light"] .g-apply .legal{border-top-color:rgba(17,18,20,.08)}
+[data-theme="light"] .g-apply .legal-fine{color:#8a8e95}
+[data-theme="light"] .g-apply .cal-actions{background:linear-gradient(180deg,rgba(241,242,244,0) 0%,var(--bg) 26%)}
+
+/* styles.css has a long-page .pair (48px top margin + hairline) that also hits the name row */
+.g-apply .panel .pair{margin:0;border-top:0}
