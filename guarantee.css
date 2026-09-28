@@ -1,6 +1,6 @@
 /* Guarantee lander (guarantee.html): the VSL page with the video removed.
    Loaded after styles.css; everything here is scoped to .g-page / .g-* so the
-   live VSL page is untouched. Blue is an accent only: glow, rings, the
+   live VSL page is untouched. Blue is an accent only: rings, the
    underline and the full stop. Actions stay cream. */
 
 .g-page{
@@ -9,18 +9,9 @@
   --blue-glow:rgba(47,107,255,.34);
 }
 
-/* ── background: a blue bloom behind the headline + faint dashed orbits ──
+/* ── background: faint dashed orbits only, no bloom behind the headline (Andrew, 09-28) ──
    Scrolls away with the hero instead of following the reader down the page. */
 .g-scene{position:absolute;inset:0 0 auto 0;height:100svh;min-height:640px}
-.g-glow{
-  position:absolute;left:50%;top:44%;
-  width:min(1300px,150vw);height:min(820px,110svh);
-  transform:translate(-50%,-50%);
-  background:
-    radial-gradient(38% 42% at 50% 46%,rgba(47,107,255,.30) 0%,rgba(47,107,255,.10) 55%,transparent 78%),
-    radial-gradient(62% 60% at 50% 50%,rgba(34,70,190,.16) 0%,transparent 72%);
-  filter:blur(30px);
-}
 .g-rings{
   position:absolute;left:50%;top:48%;
   width:min(1480px,210vw);aspect-ratio:1;
