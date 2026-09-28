@@ -51,10 +51,13 @@
 
 .g-sub{
   margin-top:round(min(3.4svh,30px),1px);
-  max-width:52ch;
+  max-width:none;
   font-size:clamp(15px,1.36vw,19.5px);
   color:#c9c3b8;
 }
+
+/* one sentence per line on desktop; phones wrap naturally, balanced */
+.g-sub span{display:block}
 
 /* ── buttons: cream primary (house style), blue-edged ghost secondary ── */
 .g-ctas{
@@ -101,7 +104,8 @@
 /* ── phones ── */
 @media (max-width:760px){
   .g-headline{font-size:clamp(32px,10.6vw,52px);line-height:round(1.02em,1px)}
-  .g-sub{font-size:16px;max-width:36ch}
+  .g-sub{font-size:16px;max-width:36ch;text-wrap:balance}
+  .g-sub span{display:inline}
   .g-ctas{flex-direction:column;width:100%;gap:12px;margin-top:26px}
   .g-ctas .cta,.g-ghost{width:100%;min-width:0;height:56px;font-size:18px}
   .g-stats{margin-top:26px;flex-wrap:wrap;row-gap:16px}
