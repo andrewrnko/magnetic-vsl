@@ -1,27 +1,17 @@
 /* Guarantee lander (guarantee.html): the VSL page with the video removed.
    Loaded after styles.css; everything here is scoped to .g-page / .g-* so the
-   live VSL page is untouched. Silver is the accent only: rings, the
+   live VSL page is untouched. Blue is the accent only: rings, the
    underline and the full stop. Actions stay cream. */
 
 .g-page{
-  --blue:#d4d8de;          /* silver (was blue #2f6bff, Andrew 09-28) */
-  --blue-soft:rgba(214,218,224,.5);
-  --blue-glow:rgba(225,230,238,.28);
+  --blue:#2f6bff;          /* blue accent (silver 09-28 midday, back to blue at Andrew's ask) */
+  --blue-soft:rgba(47,107,255,.55);
+  --blue-glow:rgba(47,107,255,.32);
 }
 
-/* ── background: a silver bloom behind the headline + faint dashed orbits ──
+/* ── background: faint dashed orbits only, no bloom behind the headline ──
    Scrolls away with the hero instead of following the reader down the page. */
 .g-scene{position:absolute;inset:0 0 auto 0;height:100svh;min-height:640px}
-/* cool silver bloom behind the headline (blue removed 09-28, back in silver at Andrew's ask) */
-.g-glow{
-  position:absolute;left:50%;top:44%;
-  width:min(1300px,150vw);height:min(820px,110svh);
-  transform:translate(-50%,-50%);
-  background:
-    radial-gradient(38% 42% at 50% 46%,rgba(214,222,234,.24) 0%,rgba(190,200,214,.08) 55%,transparent 78%),
-    radial-gradient(62% 60% at 50% 50%,rgba(170,182,200,.11) 0%,transparent 72%);
-  filter:blur(30px);
-}
 .g-rings{
   position:absolute;left:50%;top:48%;
   width:min(1480px,210vw);aspect-ratio:1;
@@ -29,8 +19,8 @@
   border-radius:50%;
   /* two dashed orbits, drawn with one conic mask per ring */
   background:
-    radial-gradient(closest-side,transparent calc(100% - 1.5px),rgba(205,210,218,.22) calc(100% - 1px),transparent 100%),
-    radial-gradient(closest-side,transparent calc(72% - 1.5px),rgba(205,210,218,.15) calc(72% - 1px),transparent 72%);
+    radial-gradient(closest-side,transparent calc(100% - 1.5px),rgba(95,140,255,.26) calc(100% - 1px),transparent 100%),
+    radial-gradient(closest-side,transparent calc(72% - 1.5px),rgba(95,140,255,.18) calc(72% - 1px),transparent 72%);
   -webkit-mask:repeating-conic-gradient(#000 0 1.6deg,transparent 1.6deg 3.4deg);
   mask:repeating-conic-gradient(#000 0 1.6deg,transparent 1.6deg 3.4deg);
   opacity:.9;
@@ -83,14 +73,14 @@
   font-family:var(--display);font-size:19px;line-height:24px;font-weight:700;letter-spacing:-.01em;
   color:var(--ink);
   border:1.5px solid var(--blue-soft);
-  background:rgba(255,255,255,.035);
-  box-shadow:inset 0 0 22px rgba(225,230,238,.06),0 0 24px rgba(225,230,238,.08);
+  background:rgba(47,107,255,.06);
+  box-shadow:inset 0 0 22px rgba(47,107,255,.10),0 0 26px rgba(47,107,255,.14);
   transition:border-color var(--m-base) var(--e-std),background var(--m-base) var(--e-std),box-shadow var(--m-base) var(--e-std);
 }
 .g-ghost:hover{
-  border-color:rgba(235,238,242,.9);
-  background:rgba(255,255,255,.07);
-  box-shadow:inset 0 0 22px rgba(225,230,238,.10),0 0 32px rgba(225,230,238,.18);
+  border-color:rgba(95,140,255,.9);
+  background:rgba(47,107,255,.12);
+  box-shadow:inset 0 0 22px rgba(47,107,255,.16),0 0 36px rgba(47,107,255,.28);
 }
 .g-ctas a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 
@@ -132,10 +122,10 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
-   THEME SWITCH (2026-09-28). Dark is the default; the nav toggle sets
+   THEME SWITCH (2026-09-28). Light is the default; the nav toggle sets
    html[data-theme="light"] and remembers it in localStorage ('mv-theme').
    Light mode is the same page inverted: graphite ink on cool paper, a
-   black pill where the cream one was, graphite silver for the accents.
+   black pill where the cream one was, the same blue for the accents.
    ═══════════════════════════════════════════════════════════════════════ */
 
 .nav-right{display:flex;align-items:center;gap:6px}
@@ -183,31 +173,22 @@ html[data-theme="light"]{
   --accent-glow:rgba(17,18,20,.12);
 }
 [data-theme="light"] .g-page{
-  --blue:#7a8089;
-  --blue-soft:rgba(40,44,52,.34);
-  --blue-glow:rgba(90,98,110,.18);
+  --blue:#2f6bff;
+  --blue-soft:rgba(47,107,255,.5);
+  --blue-glow:rgba(47,107,255,.22);
 }
 
 /* background */
-[data-theme="light"] .g-glow{
-  background:
-    radial-gradient(38% 42% at 50% 46%,rgba(150,158,172,.26) 0%,rgba(170,176,188,.10) 55%,transparent 78%),
-    radial-gradient(62% 60% at 50% 50%,rgba(190,196,206,.18) 0%,transparent 72%);
-}
 [data-theme="light"] .g-rings{
   background:
-    radial-gradient(closest-side,transparent calc(100% - 1.5px),rgba(40,46,56,.20) calc(100% - 1px),transparent 100%),
-    radial-gradient(closest-side,transparent calc(72% - 1.5px),rgba(40,46,56,.14) calc(72% - 1px),transparent 72%);
+    radial-gradient(closest-side,transparent calc(100% - 1.5px),rgba(47,107,255,.24) calc(100% - 1px),transparent 100%),
+    radial-gradient(closest-side,transparent calc(72% - 1.5px),rgba(47,107,255,.16) calc(72% - 1px),transparent 72%);
 }
 [data-theme="light"] .g-scene .vignette{
   background:
     radial-gradient(90% 70% at 50% 45%,transparent 45%,rgba(241,242,244,.6) 100%),
     linear-gradient(180deg,transparent 70%,var(--bg) 100%);
 }
-[data-theme="light"] #gSilver stop:nth-child(1){stop-color:#4e545c}
-[data-theme="light"] #gSilver stop:nth-child(2){stop-color:#a9afb8}
-[data-theme="light"] #gSilver stop:nth-child(3){stop-color:#6d737c}
-[data-theme="light"] #gSilver stop:nth-child(4){stop-color:#565c64}
 
 /* nav + menu */
 [data-theme="light"] .navbar{background:rgba(255,255,255,.74);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 14px 34px rgba(20,24,30,.08)}
@@ -228,8 +209,8 @@ html[data-theme="light"]{
 [data-theme="light"] .cta,[data-theme="light"] .skip{color:#f4f5f7}
 [data-theme="light"] .cta{box-shadow:0 10px 28px rgba(17,18,20,.20)}
 [data-theme="light"] .cta:hover{box-shadow:0 14px 34px rgba(17,18,20,.28);background:#26282c}
-[data-theme="light"] .g-ghost{background:rgba(255,255,255,.55);box-shadow:none;border-color:rgba(17,18,20,.28)}
-[data-theme="light"] .g-ghost:hover{background:#fff;border-color:rgba(17,18,20,.6);box-shadow:0 8px 24px rgba(17,18,20,.08)}
+[data-theme="light"] .g-ghost{background:rgba(47,107,255,.05);box-shadow:none;border-color:var(--blue-soft)}
+[data-theme="light"] .g-ghost:hover{background:rgba(47,107,255,.09);border-color:var(--blue);box-shadow:0 8px 24px rgba(47,107,255,.14)}
 [data-theme="light"] .g-stat + .g-stat{border-left-color:rgba(17,18,20,.14)}
 [data-theme="light"] .faces img,[data-theme="light"] .g-stat .faces img{border-color:var(--bg)}
 
