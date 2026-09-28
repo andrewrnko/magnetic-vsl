@@ -9,9 +9,19 @@
   --blue-glow:rgba(225,230,238,.28);
 }
 
-/* ── background: faint dashed orbits only, no bloom behind the headline (Andrew, 09-28) ──
+/* ── background: a gray bloom behind the headline + faint dashed orbits ──
    Scrolls away with the hero instead of following the reader down the page. */
 .g-scene{position:absolute;inset:0 0 auto 0;height:100svh;min-height:640px}
+/* neutral gray bloom behind the headline (blue version removed 09-28, gray back at Andrew's ask) */
+.g-glow{
+  position:absolute;left:50%;top:44%;
+  width:min(1300px,150vw);height:min(820px,110svh);
+  transform:translate(-50%,-50%);
+  background:
+    radial-gradient(38% 42% at 50% 46%,rgba(170,174,180,.20) 0%,rgba(150,154,160,.07) 55%,transparent 78%),
+    radial-gradient(62% 60% at 50% 50%,rgba(120,124,130,.10) 0%,transparent 72%);
+  filter:blur(30px);
+}
 .g-rings{
   position:absolute;left:50%;top:48%;
   width:min(1480px,210vw);aspect-ratio:1;
