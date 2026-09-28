@@ -136,3 +136,14 @@ The thesis, infrastructure reel, thirty-day-buffer timeline and relationship
 ladder are gone from `index.html`; their CSS is still in `styles.css` under
 the LONG PAGE block, so any of them can come back by pasting the markup.
 
+
+## Guarantee lander (2026-09-28)
+
+`guarantee.html` + `guarantee.css` → https://magnetic-vsl.pages.dev/guarantee.
+The live page with the VSL removed and the hero rebuilt on the Cardinal Mason
+layout: ticker, "1 Million Views / Guaranteed in 90 Days." (blue swoosh under
+"90 Days", blue full stop), sub, cream Apply Now + blue-edged "See Our
+Clients" ghost, then a three-stat row (1,000+ reels shipped / 1M views
+guaranteed / 90 days or we work free). The background is a blue radial bloom and
+two dashed orbits, with no 3D. Everything below the hero is `index.html`
+unchanged. `guarantee.css` is scoped to `.g-page`/`.g-*`, and `styles.css` is untouched.
