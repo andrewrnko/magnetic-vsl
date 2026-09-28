@@ -1,12 +1,12 @@
 /* Guarantee lander (guarantee.html): the VSL page with the video removed.
    Loaded after styles.css; everything here is scoped to .g-page / .g-* so the
-   live VSL page is untouched. Blue is an accent only: rings, the
+   live VSL page is untouched. Silver is the accent only: rings, the
    underline and the full stop. Actions stay cream. */
 
 .g-page{
-  --blue:#2f6bff;
-  --blue-soft:rgba(47,107,255,.55);
-  --blue-glow:rgba(47,107,255,.34);
+  --blue:#d4d8de;          /* silver (was blue #2f6bff, Andrew 09-28) */
+  --blue-soft:rgba(214,218,224,.5);
+  --blue-glow:rgba(225,230,238,.28);
 }
 
 /* ── background: faint dashed orbits only, no bloom behind the headline (Andrew, 09-28) ──
@@ -19,8 +19,8 @@
   border-radius:50%;
   /* two dashed orbits, drawn with one conic mask per ring */
   background:
-    radial-gradient(closest-side,transparent calc(100% - 1.5px),rgba(95,140,255,.28) calc(100% - 1px),transparent 100%),
-    radial-gradient(closest-side,transparent calc(72% - 1.5px),rgba(95,140,255,.20) calc(72% - 1px),transparent 72%);
+    radial-gradient(closest-side,transparent calc(100% - 1.5px),rgba(205,210,218,.22) calc(100% - 1px),transparent 100%),
+    radial-gradient(closest-side,transparent calc(72% - 1.5px),rgba(205,210,218,.15) calc(72% - 1px),transparent 72%);
   -webkit-mask:repeating-conic-gradient(#000 0 1.6deg,transparent 1.6deg 3.4deg);
   mask:repeating-conic-gradient(#000 0 1.6deg,transparent 1.6deg 3.4deg);
   opacity:.9;
@@ -45,9 +45,9 @@
   position:absolute;left:-2%;right:-2%;bottom:-.16em;
   width:104%;height:.2em;
   color:var(--blue);
-  filter:drop-shadow(0 0 10px var(--blue-glow));
+  filter:drop-shadow(0 0 8px var(--blue-glow));
 }
-.g-dot{font-style:normal;color:var(--blue);text-shadow:0 0 22px var(--blue-glow)}
+.g-dot{font-style:normal;color:var(--blue);text-shadow:0 0 18px var(--blue-glow)}
 
 .g-sub{
   margin-top:round(min(3.4svh,30px),1px);
@@ -73,14 +73,14 @@
   font-family:var(--display);font-size:19px;line-height:24px;font-weight:700;letter-spacing:-.01em;
   color:var(--ink);
   border:1.5px solid var(--blue-soft);
-  background:rgba(47,107,255,.06);
-  box-shadow:inset 0 0 22px rgba(47,107,255,.10),0 0 26px rgba(47,107,255,.14);
+  background:rgba(255,255,255,.035);
+  box-shadow:inset 0 0 22px rgba(225,230,238,.06),0 0 24px rgba(225,230,238,.08);
   transition:border-color var(--m-base) var(--e-std),background var(--m-base) var(--e-std),box-shadow var(--m-base) var(--e-std);
 }
 .g-ghost:hover{
-  border-color:rgba(95,140,255,.9);
-  background:rgba(47,107,255,.12);
-  box-shadow:inset 0 0 22px rgba(47,107,255,.16),0 0 36px rgba(47,107,255,.28);
+  border-color:rgba(235,238,242,.9);
+  background:rgba(255,255,255,.07);
+  box-shadow:inset 0 0 22px rgba(225,230,238,.10),0 0 32px rgba(225,230,238,.18);
 }
 .g-ctas a:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
 
